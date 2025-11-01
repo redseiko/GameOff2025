@@ -31,7 +31,7 @@ namespace GameJam {
     }
 
     public void ProcessToggleMenuAction(InputAction.CallbackContext context = default) {
-      Debug.Log($"ToggleMenu?");
+      UIManager.Instance.ToggleMenu();
     }
 
     void LateUpdate() {
