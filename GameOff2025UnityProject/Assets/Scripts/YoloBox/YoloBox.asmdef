@@ -3,6 +3,7 @@
     "rootNamespace": "",
     "references": [
         "Coffee.UIEffect",
+        "DOTween.Modules",
         "Unity.TextMeshPro",
         "Unity.InputSystem"
     ],

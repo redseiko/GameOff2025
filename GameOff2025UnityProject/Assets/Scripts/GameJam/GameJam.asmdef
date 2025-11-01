@@ -3,6 +3,7 @@
     "rootNamespace": "GameJam",
     "references": [
         "Coffee.UIEffect",
+        "DOTween.Modules",
         "Eflatun.SceneReference",
         "MackySoft.SerializeReferenceExtensions",
         "Unity.Cinemachine",
