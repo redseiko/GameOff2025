@@ -4,8 +4,8 @@
     "references": [
         "Coffee.UIEffect",
         "DOTween.Modules",
-        "Unity.TextMeshPro",
-        "Unity.InputSystem"
+        "Unity.InputSystem",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
