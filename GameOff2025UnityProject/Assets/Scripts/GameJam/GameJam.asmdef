@@ -6,6 +6,7 @@
         "DOTween.Modules",
         "Eflatun.SceneReference",
         "MackySoft.SerializeReferenceExtensions",
+        "QuickOutline",
         "Unity.Cinemachine",
         "Unity.TextMeshPro",
         "YoloBox"
