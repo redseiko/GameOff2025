@@ -44,3 +44,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3165a0ca7ec13674897831997feb0e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: GameJam::GameJam.InputManager
+  <InteractAction>k__BackingField:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Interact
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: af592f07-3cfd-4f72-829e-0cc4abd2aa83
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 1781555164194001046, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  <ToggleMenuAction>k__BackingField:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Toggle Menu
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 2ad78dd6-c3d8-4a1e-ad38-032220ce75f3
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -5992890695355226939, guid: 052faaac586de48259a63d0c4782560b, type: 3}
