@@ -1,0 +1,3 @@
+[submodule "GameOff2025UnityProject/Assets/ThirdParty"]
+	path = GameOff2025UnityProject/Assets/ThirdParty
+	url = https://github.com/redseiko/GameOff2025-ThirdParty.git
