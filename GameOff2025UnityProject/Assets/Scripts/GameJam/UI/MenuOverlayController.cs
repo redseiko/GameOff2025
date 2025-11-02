@@ -22,6 +22,7 @@ namespace GameJam {
     public void ResetOverlay() {
       OverlayCanvasGroup.alpha = 0f;
       OverlayCanvasGroup.blocksRaycasts = false;
+
       IsOverlayVisible = false;
     }
 
