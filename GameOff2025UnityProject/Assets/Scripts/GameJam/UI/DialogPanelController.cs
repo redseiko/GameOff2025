@@ -14,6 +14,10 @@ namespace GameJam {
     [field: Header("State")]
     public bool IsPanelVisible { get; private set; }
 
+    void Start() {
+      ResetPanel();
+    }
+
     public void ResetPanel() {
       PanelCanvasGroup.alpha = 0f;
       PanelCanvasGroup.blocksRaycasts = false;

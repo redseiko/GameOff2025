@@ -1,0 +1,68 @@
+using DG.Tweening;
+
+using TMPro;
+
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace GameJam {
+  public sealed class InteractPanelController : MonoBehaviour {
+    [field: Header("Panel")]
+    [field: SerializeField]
+    public RectTransform PanelRectTransform { get; private set; }
+
+    [field: SerializeField]
+    public CanvasGroup PanelCanvasGroup { get; private set; }
+
+    [field: Header("Interact")]
+    [field: SerializeField]
+    public TextMeshProUGUI InteractText { get; private set; }
+
+    [field: SerializeField]
+    public Image InteractIcon { get; private set; }
+
+    [field: Header("State")]
+    public bool IsPanelVisible { get; private set; }
+
+    void Start() {
+      ResetPanel();
+    }
+
+    public void ResetPanel() {
+      PanelCanvasGroup.alpha = 0f;
+      PanelCanvasGroup.blocksRaycasts = false;
+
+      IsPanelVisible = false;
+    }
+
+    public void TogglePanel() {
+      if (IsPanelVisible) {
+        HidePanel();
+      } else {
+        ShowPanel();
+      }
+    }
+
+    public void ShowPanel() {
+      PanelCanvasGroup.DOComplete(withCallbacks: true);
+
+      PanelCanvasGroup.blocksRaycasts = true;
+      IsPanelVisible = true;
+
+      PanelCanvasGroup
+          .DOFade(1f, 0.2f)
+          .SetUpdate(isIndependentUpdate: true);
+    }
+
+    public void HidePanel() {
+      PanelCanvasGroup.DOComplete(withCallbacks: false);
+
+      PanelCanvasGroup.blocksRaycasts = false;
+      IsPanelVisible = false;
+
+      PanelCanvasGroup
+          .DOFade(0f, 0.2f)
+          .SetUpdate(isIndependentUpdate: true);
+    }
+  }
+}
