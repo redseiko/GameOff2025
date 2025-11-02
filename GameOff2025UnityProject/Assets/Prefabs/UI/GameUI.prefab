@@ -29,9 +29,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 282512850269568928}
   - {fileID: 4674964486352117701}
   - {fileID: 7105934343781419707}
-  - {fileID: 282512850269568928}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -53,6 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: GameJam::GameJam.UIManager
   <MenuOverlay>k__BackingField: {fileID: 8709637200332576305}
   <DialogPanel>k__BackingField: {fileID: 2887635368746583825}
+  <InteractPanel>k__BackingField: {fileID: 698723958050727490}
 --- !u!1001 &431336147041029953
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -155,6 +156,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 439037194072912097, guid: b879dd48032b63c4c8ad284ee1b4bf46, type: 3}
   m_PrefabInstance: {fileID: 431336147041029953}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &698723958050727490 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 886703679212726531, guid: b879dd48032b63c4c8ad284ee1b4bf46, type: 3}
+  m_PrefabInstance: {fileID: 431336147041029953}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 327f165a69b4c184da1fd6035f21c842, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.InteractPanelController
 --- !u!1001 &991950213117887250
 PrefabInstance:
   m_ObjectHideFlags: 0

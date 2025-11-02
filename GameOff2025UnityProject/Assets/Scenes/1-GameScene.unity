@@ -466,7 +466,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 1
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -723,6 +723,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e37c29fef70ef743856d5ff27fe925d, type: 3}
+--- !u!1 &3583743971711482270 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7288649035009495243, guid: 2e37c29fef70ef743856d5ff27fe925d, type: 3}
+  m_PrefabInstance: {fileID: 3583743971711482269}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7077153120084906131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -877,6 +882,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e0886e1364c1ee4795ccaf8cc86ec12, type: 3}
+--- !u!1 &7679658002039884117 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 666382761018578699, guid: 7e0886e1364c1ee4795ccaf8cc86ec12, type: 3}
+  m_PrefabInstance: {fileID: 7679658002039884116}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8298511990388122098
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -946,6 +956,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3290789797476167712, guid: 7f9470a2b2dbe654ebd33313e909989a, type: 3}
+      propertyPath: <InteractAgent>k__BackingField
+      value: 
+      objectReference: {fileID: 3583743971711482270}
+    - target: {fileID: 3290789797476167712, guid: 7f9470a2b2dbe654ebd33313e909989a, type: 3}
+      propertyPath: <InteractCamera>k__BackingField
+      value: 
+      objectReference: {fileID: 7679658002039884117}
     - target: {fileID: 3382731680704435915, guid: 7f9470a2b2dbe654ebd33313e909989a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

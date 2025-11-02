@@ -44,3 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37bd2b6ff94ad0147ae03633ca2a421a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: GameJam::GameJam.InteractManager
+  <InteractAgent>k__BackingField: {fileID: 0}
+  <InteractCamera>k__BackingField: {fileID: 0}
+  <InteractRange>k__BackingField: 10
+  <SphereCastRadius>k__BackingField: 0.1
+  <SphereCastLayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 17
+  <CanInteract>k__BackingField: 1
+  <ClosestInteractable>k__BackingField: {fileID: 0}

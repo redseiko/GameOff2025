@@ -24,6 +24,9 @@ namespace GameJam {
     [field: Header("State")]
     public bool IsPanelVisible { get; private set; }
 
+    [field: SerializeField]
+    public Interactable CurrentInteractable { get; private set; }
+
     void Start() {
       ResetPanel();
     }
@@ -63,6 +66,29 @@ namespace GameJam {
       PanelCanvasGroup
           .DOFade(0f, 0.2f)
           .SetUpdate(isIndependentUpdate: true);
+    }
+
+    public void SetInteractable(Interactable interactable, bool forceRefresh = false) {
+      if (CurrentInteractable == interactable && !forceRefresh) {
+        return;
+      }
+
+      CurrentInteractable = interactable;
+
+      if (interactable) {
+        InteractText.text = interactable.InteractText;
+
+        if (interactable.InteractIcon) {
+          InteractIcon.sprite = interactable.InteractIcon;
+          InteractIcon.enabled = true;
+        } else {
+          InteractIcon.enabled = false;
+        }
+
+        ShowPanel();
+      } else {
+        HidePanel();
+      }
     }
   }
 }
