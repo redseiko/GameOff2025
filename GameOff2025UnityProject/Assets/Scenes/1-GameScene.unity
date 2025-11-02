@@ -251,6 +251,11 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!4 &491327956 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6706699521519567153, guid: 7e0886e1364c1ee4795ccaf8cc86ec12, type: 3}
+  m_PrefabInstance: {fileID: 7679658002039884116}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519133422
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,6 +714,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: YoloCapsule
       objectReference: {fileID: 0}
+    - target: {fileID: 9215706087068146243, guid: 2e37c29fef70ef743856d5ff27fe925d, type: 3}
+      propertyPath: <MainCamera>k__BackingField
+      value: 
+      objectReference: {fileID: 491327956}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

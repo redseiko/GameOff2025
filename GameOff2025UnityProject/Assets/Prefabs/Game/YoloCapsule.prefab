@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7456378462951843263}
   - component: {fileID: 6840425668924424381}
   - component: {fileID: 7566034588987168546}
+  - component: {fileID: 9215706087068146243}
   m_Layer: 0
   m_Name: YoloCapsule
   m_TagString: Untagged
@@ -139,3 +140,46 @@ CharacterController:
   m_SkinWidth: 0.01
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9215706087068146243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7288649035009495243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a890582c1cf71140a67298fb4f274bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.PlayerStateMachine
+  <MoveAction>k__BackingField:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Move
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 8fdb50d2-a110-4b43-aa68-ad22478fa141
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  <JumpAction>k__BackingField:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Jump
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 845ceef3-984d-4eec-8b53-d1ebb388fd40
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -2099379676528639254, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  <Velocity>k__BackingField: {x: 0, y: 0, z: 0}
+  <MovementSpeed>k__BackingField: 5
+  <JumpForce>k__BackingField: 5
+  <LookRotationDampFactor>k__BackingField: 10
+  <GravityMultiplier>k__BackingField: 2
+  <MainCamera>k__BackingField: {fileID: 0}
+  <CharacterController>k__BackingField: {fileID: 7566034588987168546}
