@@ -8,6 +8,14 @@ namespace GameJam {
     [field: SerializeField]
     public MenuOverlayController MenuOverlay { get; private set; }
 
+    [field: Header("Panels")]
+    [field: SerializeField]
+    public DialogPanelController DialogPanel { get; private set; }
+
+    public bool ShouldUnlockCursor() {
+      return MenuOverlay.IsOverlayVisible || DialogPanel.IsPanelVisible;
+    }
+
     public void ToggleMenu() {
       MenuOverlay.ToggleOverlay();
     }

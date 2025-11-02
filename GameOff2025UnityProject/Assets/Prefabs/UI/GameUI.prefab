@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: GameJam::GameJam.UIManager
   <MenuOverlay>k__BackingField: {fileID: 8709637200332576305}
+  <DialogPanel>k__BackingField: {fileID: 2887635368746583825}
 --- !u!1001 &991950213117887250
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -148,6 +149,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 074d65bd0542fa44eb46192e50cc9d01, type: 3}
+--- !u!114 &2887635368746583825 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2726626552035755011, guid: 074d65bd0542fa44eb46192e50cc9d01, type: 3}
+  m_PrefabInstance: {fileID: 991950213117887250}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 529c099982cc48948979f487cadcbc06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.DialogPanelController
 --- !u!224 &7105934343781419707 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8023519895198419369, guid: 074d65bd0542fa44eb46192e50cc9d01, type: 3}
