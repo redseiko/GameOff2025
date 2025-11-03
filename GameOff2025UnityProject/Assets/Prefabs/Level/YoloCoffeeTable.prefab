@@ -384,7 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: GameJam::GameJam.Interactable
   <CanInteract>k__BackingField: 1
-  <InteractRange>k__BackingField: 10
+  <InteractRange>k__BackingField: 2
   <InteractText>k__BackingField: Coffee Table
   <InteractIcon>k__BackingField: {fileID: 0}
   <HighlightOutline>k__BackingField: {fileID: 522583243006844268}

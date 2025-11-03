@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: GameJam::GameJam.InteractManager
   <InteractAgent>k__BackingField: {fileID: 0}
   <InteractCamera>k__BackingField: {fileID: 0}
-  <InteractRange>k__BackingField: 10
+  <InteractRange>k__BackingField: 8
   <SphereCastRadius>k__BackingField: 0.025
   <SphereCastLayerMask>k__BackingField:
     serializedVersion: 2

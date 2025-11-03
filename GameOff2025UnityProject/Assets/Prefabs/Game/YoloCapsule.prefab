@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6840425668924424381}
   - component: {fileID: 7566034588987168546}
   - component: {fileID: 9215706087068146243}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: YoloCapsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
