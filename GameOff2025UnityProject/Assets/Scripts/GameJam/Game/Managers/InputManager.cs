@@ -27,7 +27,11 @@ namespace GameJam {
     }
 
     public void ProcessInteractAction(InputAction.CallbackContext context = default) {
-      Debug.Log($"Interact?");
+      Interactable interactable = InteractManager.Instance.ClosestInteractable;
+
+      if (interactable) {
+        interactable.Interact(InteractManager.Instance.InteractAgent);
+      }
     }
 
     public void ProcessToggleMenuAction(InputAction.CallbackContext context = default) {

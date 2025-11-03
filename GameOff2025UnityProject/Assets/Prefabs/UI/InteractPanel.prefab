@@ -209,7 +209,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Testing
+  m_text: Interactable
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c1f4086ca34ecc5479e44757242f3922, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: c23ac5523b3992147b7b590e7c96843f, type: 2}
@@ -239,22 +239,22 @@ MonoBehaviour:
   m_fontSize: 48
   m_fontSizeBase: 48
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 32
+  m_fontSizeMax: 48
   m_fontStyle: 1
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 8192
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: -3
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -10
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
   m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 3
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
@@ -446,8 +446,8 @@ MonoBehaviour:
   m_GradationMode: 9
   m_GradationIntensity: 1
   m_GradationColorFilter: 1
-  m_GradationColor1: {r: 1, g: 1, b: 1, a: 0.8}
-  m_GradationColor2: {r: 1, g: 1, b: 1, a: 0.5019608}
+  m_GradationColor1: {r: 1, g: 1, b: 1, a: 0.5019608}
+  m_GradationColor2: {r: 1, g: 1, b: 1, a: 0}
   m_GradationColor3: {r: 1, g: 1, b: 1, a: 1}
   m_GradationColor4: {r: 1, g: 1, b: 1, a: 1}
   m_GradationGradient:
@@ -482,7 +482,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   m_GradationOffset: 0
   m_GradationScale: 1
-  m_GradationRotation: 45
+  m_GradationRotation: 0
   m_GradationWrapMode: 0
   m_GradationReverse: 0
   m_AllowToModifyMeshShape: 1
