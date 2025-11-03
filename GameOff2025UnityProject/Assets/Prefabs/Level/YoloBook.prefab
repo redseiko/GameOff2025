@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: GameJam::GameJam.Interactable
   <CanInteract>k__BackingField: 1
-  <InteractRange>k__BackingField: 8
+  <InteractRange>k__BackingField: 10
   <InteractText>k__BackingField: YoloBook
   <InteractIcon>k__BackingField: {fileID: 21300000, guid: 4ca3cad354f688841aa6209be676b153, type: 3}
   <HighlightOutline>k__BackingField: {fileID: 8609951513722770488}

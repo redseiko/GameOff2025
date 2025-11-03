@@ -47,7 +47,7 @@ MonoBehaviour:
   <InteractAgent>k__BackingField: {fileID: 0}
   <InteractCamera>k__BackingField: {fileID: 0}
   <InteractRange>k__BackingField: 10
-  <SphereCastRadius>k__BackingField: 0.1
+  <SphereCastRadius>k__BackingField: 0.05
   <SphereCastLayerMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 17
