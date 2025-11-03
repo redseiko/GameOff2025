@@ -9,6 +9,7 @@
         "QuickOutline",
         "Unity.Cinemachine",
         "Unity.InputSystem",
+        "Unity.MaterialPropertyProvider",
         "Unity.TextMeshPro",
         "Wafflus.DialogueSystem",
         "YoloBox"
