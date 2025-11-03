@@ -171,6 +171,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: YoloBook
       objectReference: {fileID: 0}
+    - target: {fileID: 7409753389373722081, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <YoloColor>k__BackingField.b
+      value: 0.24313724
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409753389373722081, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <YoloColor>k__BackingField.g
+      value: 0.4817073
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409753389373722081, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <YoloColor>k__BackingField.r
+      value: 0.7647059
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -227,6 +239,18 @@ PrefabInstance:
     - target: {fileID: 6828127394486398382, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
       propertyPath: m_Name
       value: YoloBook
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409753389373722081, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <YoloColor>k__BackingField.b
+      value: 0.28920433
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409753389373722081, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <YoloColor>k__BackingField.g
+      value: 0.5994645
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409753389373722081, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <YoloColor>k__BackingField.r
+      value: 0.6320754
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
