@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6840425668924424381}
   - component: {fileID: 7566034588987168546}
   - component: {fileID: 9215706087068146243}
+  - component: {fileID: 6568414682142948119}
   m_Layer: 2
   m_Name: YoloCapsule
   m_TagString: Untagged
@@ -183,3 +184,17 @@ MonoBehaviour:
   <GravityMultiplier>k__BackingField: 2
   <MainCamera>k__BackingField: {fileID: 0}
   <CharacterController>k__BackingField: {fileID: 7566034588987168546}
+--- !u!114 &6568414682142948119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7288649035009495243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4dc25192461c3b449c2ca4bed2ffdb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.YoloCapsuleController
+  <CapsuleMass>k__BackingField: 60
+  <CapsulePushForce>k__BackingField: 0.1
