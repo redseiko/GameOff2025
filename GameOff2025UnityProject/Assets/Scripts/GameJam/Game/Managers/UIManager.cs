@@ -15,6 +15,9 @@ namespace GameJam {
     [field: SerializeField]
     public InteractPanelController InteractPanel { get; private set; }
 
+    [field: SerializeField]
+    public PopupPanelController PopupPanel { get; private set; }
+
     public bool ShouldUnlockCursor() {
       return MenuOverlay.IsOverlayVisible || DialogPanel.IsPanelVisible;
     }
@@ -25,6 +28,10 @@ namespace GameJam {
 
     public void SetInteractable(Interactable interactable, bool forceRefresh = false) {
       InteractPanel.SetInteractable(interactable, forceRefresh);
+    }
+
+    public void ShowPopupText(string popupText, float duration) {
+      PopupPanel.ShowPopupText(popupText, duration);
     }
   }
 }
