@@ -127,17 +127,101 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <OnInteract>k__BackingField.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <OnInteract>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <OnInteract>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <OnInteract>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <OnInteract>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 524580122}
+    - target: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <OnInteract>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1014210253}
+    - target: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <OnInteract>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1014210253}
+    - target: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <OnInteract>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <OnInteract>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <OnInteract>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <OnInteract>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Log
+      objectReference: {fileID: 0}
+    - target: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <OnInteract>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_CanHighlight
+      objectReference: {fileID: 0}
+    - target: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <OnInteract>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: set_CanInteract
+      objectReference: {fileID: 0}
+    - target: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <OnInteract>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameJam.YoloDebuggable, GameJam
+      objectReference: {fileID: 0}
+    - target: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <OnInteract>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: GameJam.Interactable, GameJam
+      objectReference: {fileID: 0}
+    - target: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <OnInteract>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: GameJam.Interactable, GameJam
+      objectReference: {fileID: 0}
+    - target: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <OnInteract>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <OnInteract>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <OnInteract>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <OnInteract>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <OnInteract>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1009173377588578888, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.2
+      value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: 1009173377588578888, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.55
+      value: 0.474
       objectReference: {fileID: 0}
     - target: {fileID: 1009173377588578888, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.2
+      value: 3.157
       objectReference: {fileID: 0}
     - target: {fileID: 1009173377588578888, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
       propertyPath: m_LocalRotation.w
@@ -167,9 +251,268 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4537281702171415735, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6828127394486398382, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
       propertyPath: m_Name
       value: YoloBook
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6828127394486398382, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 524580122}
+  m_SourcePrefab: {fileID: 100100000, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+--- !u!1 &524580114 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6828127394486398382, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+  m_PrefabInstance: {fileID: 861606}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &524580122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524580114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed75e41506dfbb84ba0361a60a9d3337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.YoloDebuggable
+  <Message>k__BackingField: yolo
+--- !u!114 &1014210253 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+  m_PrefabInstance: {fileID: 6786007590864633019}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ace9ec70e617a047ac77da26e8417a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.Interactable
+--- !u!1 &1186731938
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1186731940}
+  - component: {fileID: 1186731939}
+  m_Layer: 0
+  m_Name: YoloLevelEventDescriptor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1186731939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186731938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1524d24611cddb469945aed06636e1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.YoloLevelEventDescriptor
+  <LevelGameState>k__BackingField: {fileID: 0}
+--- !u!4 &1186731940
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186731938}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.34448, y: 0.525, z: 3.21745}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1442870990
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1442870995}
+  - component: {fileID: 1442870994}
+  - component: {fileID: 1442870993}
+  - component: {fileID: 1442870992}
+  - component: {fileID: 1442870991}
+  m_Layer: 0
+  m_Name: Box Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1442870991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442870990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed75e41506dfbb84ba0361a60a9d3337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.YoloDebuggable
+  <Message>k__BackingField: yolooo
+--- !u!114 &1442870992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442870990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3202118d8d8725d45971460066bbce35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.CollideInteractable
+  <OnCollide>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1442870991}
+        m_TargetAssemblyTypeName: GameJam.YoloDebuggable, GameJam
+        m_MethodName: Log
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1442870993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442870990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 0
+  priority: 0
+  blendDistance: 1
+  weight: 1
+  sharedProfile: {fileID: 0}
+--- !u!65 &1442870994
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442870990}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1442870995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442870990}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.621, y: 0.509, z: 4.513}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1921024223
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <CanInteract>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <CanHighlight>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009173377588578888, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.318
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009173377588578888, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009173377588578888, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.069
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009173377588578888, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009173377588578888, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009173377588578888, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009173377588578888, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009173377588578888, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009173377588578888, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009173377588578888, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6828127394486398382, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: m_Name
+      value: YoloBook (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -224,6 +567,14 @@ PrefabInstance:
     - target: {fileID: 4279273382838388534, guid: 73eaea2cedaa4da489a647f5f269e2c3, type: 3}
       propertyPath: m_Name
       value: YoloCoffeeTable
+      objectReference: {fileID: 0}
+    - target: {fileID: 7261002544541797258, guid: 73eaea2cedaa4da489a647f5f269e2c3, type: 3}
+      propertyPath: m_Mass
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159659977434345499, guid: 73eaea2cedaa4da489a647f5f269e2c3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9020777055707280139, guid: 73eaea2cedaa4da489a647f5f269e2c3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -281,9 +632,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <CanInteract>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <CanHighlight>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1009173377588578888, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.2
+      value: -0.318
       objectReference: {fileID: 0}
     - target: {fileID: 1009173377588578888, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
       propertyPath: m_LocalPosition.y
@@ -291,7 +650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1009173377588578888, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.2
+      value: 3.4104
       objectReference: {fileID: 0}
     - target: {fileID: 1009173377588578888, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
       propertyPath: m_LocalRotation.w
@@ -393,5 +752,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 7796096761948162080}
   - {fileID: 6786007590864633019}
+  - {fileID: 1921024223}
   - {fileID: 861606}
   - {fileID: 3011105145747268558}
+  - {fileID: 1186731940}
+  - {fileID: 1442870995}
