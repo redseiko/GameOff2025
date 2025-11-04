@@ -39,7 +39,7 @@ namespace GameJam {
       IsPanelVisible = true;
 
       PanelCanvasGroup
-          .DOFade(1f, 0.2f)
+          .DOFade(1f, 0.4f)
           .SetUpdate(isIndependentUpdate: true);
     }
 
@@ -61,6 +61,7 @@ namespace GameJam {
 
       DOTween.Sequence()
           .InsertCallback(0f, ShowPanel)
+          .Insert(0f, PopupText.transform.DOPunchPosition(new(0f, -10f, 0f), 0.4f, 0, 0f))
           .InsertCallback(popupDuration, HidePanel)
           .SetTarget(gameObject)
           .SetLink(gameObject);

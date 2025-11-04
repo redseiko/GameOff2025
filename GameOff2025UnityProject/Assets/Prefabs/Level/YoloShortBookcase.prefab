@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 5421184202854683149}
   - component: {fileID: 2885617207878462184}
   - component: {fileID: 7102588568281483882}
+  - component: {fileID: 2146925859795869887}
   m_Layer: 0
   m_Name: YoloShortBookcase
   m_TagString: Untagged
@@ -199,7 +200,19 @@ MonoBehaviour:
   <CanHighlight>k__BackingField: 1
   <OnInteract>k__BackingField:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2146925859795869887}
+        m_TargetAssemblyTypeName: GameJam.FlavorText, GameJam
+        m_MethodName: ShowPopupText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7102588568281483882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,6 +257,20 @@ MonoBehaviour:
     - {x: 0.57735026, y: 0.57735026, z: -0.57735026}
     - {x: 0.57735026, y: 0.57735026, z: 0.57735026}
     - {x: 0.57735026, y: -0.57735026, z: 0.57735026}
+--- !u!114 &2146925859795869887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973320144789273655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0ebe5720354ec74b85835182a6b9aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.FlavorText
+  <PopupText>k__BackingField: A short bookcase... for books?
+  <PopupDuration>k__BackingField: 4
 --- !u!1 &5704563577547243685
 GameObject:
   m_ObjectHideFlags: 0
