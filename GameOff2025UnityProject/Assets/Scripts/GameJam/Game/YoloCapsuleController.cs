@@ -6,9 +6,16 @@ namespace GameJam {
     public float CapsuleMass { get; set; } = 80f;
 
     [field: SerializeField]
+    public bool CapsuleCanPush { get; set; } = false;
+
+    [field: SerializeField]
     public float CapsulePushForce { get; set; } = 0.1f;
 
     void OnControllerColliderHit(ControllerColliderHit hit) {
+      if (!CapsuleCanPush) {
+        return;
+      }
+
       if (hit.collider.transform.root == transform.root) {
         return;
       }
