@@ -1,6 +1,7 @@
 using System;
 
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 using YoloBox;
 
@@ -33,6 +34,14 @@ namespace GameJam {
     void FixedUpdate() {
       UpdateRaycastHits(InteractAgent, InteractCamera, InteractRange);
       UpdateClosestInteractable();
+    }
+
+    public void ProcessInteractAction(InputAction.CallbackContext context = default) {
+      Interactable interactable = ClosestInteractable;
+
+      if (interactable) {
+        interactable.Interact(InteractAgent);
+      }
     }
 
     int _raycastHitsCount = 0;

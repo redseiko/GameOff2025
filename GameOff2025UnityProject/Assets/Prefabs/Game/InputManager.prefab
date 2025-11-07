@@ -56,6 +56,18 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 1781555164194001046, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  <PickupAction>k__BackingField:
+    m_UseReference: 1
+    m_Action:
+      m_Name: 
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 2f6c9641-6ca5-4b25-b438-4d4ab6a0450d
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 3966184217846431121, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   <ToggleMenuAction>k__BackingField:
     m_UseReference: 1
     m_Action:
@@ -68,3 +80,4 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: -5992890695355226939, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  <IsCursorLocked>k__BackingField: 0

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 using YoloBox;
 
@@ -18,12 +19,16 @@ namespace GameJam {
     [field: SerializeField]
     public PopupPanelController PopupPanel { get; private set; }
 
-    public bool ShouldUnlockCursor() {
-      return MenuOverlay.IsOverlayVisible || DialogPanel.IsPanelVisible;
+    public void ProcessToggleMenuAction(InputAction.CallbackContext context = default) {
+      ToggleMenu();
     }
 
     public void ToggleMenu() {
       MenuOverlay.ToggleOverlay();
+    }
+
+    public bool ShouldUnlockCursor() {
+      return MenuOverlay.IsOverlayVisible || DialogPanel.IsPanelVisible;
     }
 
     public void SetInteractable(Interactable interactable, bool forceRefresh = false) {

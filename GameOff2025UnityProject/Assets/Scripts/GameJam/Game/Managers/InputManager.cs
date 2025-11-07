@@ -10,32 +10,19 @@ namespace GameJam {
     public InputActionProperty InteractAction { get; private set; }
 
     [field: SerializeField]
+    public InputActionProperty PickupAction { get; private set; }
+
+    [field: SerializeField]
     public InputActionProperty ToggleMenuAction { get; private set; }
 
     [field: Header("State")]
     [field: SerializeField]
     public bool IsCursorLocked { get; private set; }
 
-    void OnEnable() {
-      InteractAction.action.performed += ProcessInteractAction;
-      ToggleMenuAction.action.performed += ProcessToggleMenuAction;
-    }
-
-    void OnDisable() {
-      InteractAction.action.performed -= ProcessInteractAction;
-      ToggleMenuAction.action.performed -= ProcessToggleMenuAction;
-    }
-
-    public void ProcessInteractAction(InputAction.CallbackContext context = default) {
-      Interactable interactable = InteractManager.Instance.ClosestInteractable;
-
-      if (interactable) {
-        interactable.Interact(InteractManager.Instance.InteractAgent);
-      }
-    }
-
-    public void ProcessToggleMenuAction(InputAction.CallbackContext context = default) {
-      UIManager.Instance.ToggleMenu();
+    void Start() {
+      InteractAction.action.performed += InteractManager.Instance.ProcessInteractAction;
+      PickupAction.action.performed += HandManager.Instance.ProcessPickupAction;
+      ToggleMenuAction.action.performed += UIManager.Instance.ProcessToggleMenuAction;
     }
 
     void LateUpdate() {

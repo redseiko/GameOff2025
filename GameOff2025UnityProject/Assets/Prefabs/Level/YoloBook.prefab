@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 642353977728957908}
   - component: {fileID: 8609951513722770488}
   - component: {fileID: 7409753389373722081}
+  - component: {fileID: 3338292915527495642}
   m_Layer: 0
   m_Name: YoloBook
   m_TagString: Untagged
@@ -220,3 +221,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: GameJam::GameJam.YoloColorPropertyProvider
   <YoloColor>k__BackingField: {r: 0.275, g: 0.275, b: 0.275, a: 1}
+--- !u!114 &3338292915527495642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6828127394486398382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32bcf7de2c9b9694eb30b761b724a727, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.HandItem
+  <PickupPositionOffset>k__BackingField: {x: 0, y: 0, z: 0.5}
+  <PickupRotationOffset>k__BackingField: {x: 0, y: 0, z: 0}
+  <CanPickup>k__BackingField: 1
+  <IsPickedUp>k__BackingField: 0

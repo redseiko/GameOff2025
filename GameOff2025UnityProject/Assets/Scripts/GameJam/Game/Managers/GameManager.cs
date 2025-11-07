@@ -8,6 +8,10 @@ namespace GameJam {
     [field: SerializeField]
     public bool IsGamePaused { get; private set; }
 
+    void Start() {
+      InputManager.Instance.LockCursor();
+    }
+
     void LateUpdate() {
       UpdateGamePauseState();
     }

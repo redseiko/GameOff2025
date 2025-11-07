@@ -26,7 +26,7 @@ namespace GameJam {
     }
 
     protected void FaceMoveDirection() {
-      Vector3 faceDirection = _stateMachine.Velocity;
+      Vector3 faceDirection = _stateMachine.MainCamera.forward;
       faceDirection.y = 0;
 
       if (faceDirection == Vector3.zero) {
