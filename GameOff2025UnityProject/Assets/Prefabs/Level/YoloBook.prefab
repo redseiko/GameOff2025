@@ -102,7 +102,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6828127394486398382}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: b0783d0d7ca29b14bbe6fd54db8df95d, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -157,6 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: GameJam::GameJam.Interactable
   <CanInteract>k__BackingField: 1
   <InteractRange>k__BackingField: 2
+  <ShouldShowUI>k__BackingField: 1
   <InteractText>k__BackingField: YoloBook
   <InteractIcon>k__BackingField: {fileID: 21300000, guid: 4ca3cad354f688841aa6209be676b153, type: 3}
   <HighlightOutline>k__BackingField: {fileID: 8609951513722770488}
