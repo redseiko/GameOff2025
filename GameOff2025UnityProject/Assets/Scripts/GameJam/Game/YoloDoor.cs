@@ -30,7 +30,7 @@ namespace GameJam {
         return;
       }
 
-      ToggleDoorColliders(toggleOn: false);
+      ToggleDoorColliders(interactAgent, toggleOn: false);
 
       Vector3 rotation = IsDoorOpen ? OpenDoorRotation * -1f : OpenDoorRotation;
       bool isDoorOpen = !IsDoorOpen;
@@ -39,15 +39,19 @@ namespace GameJam {
           .Append(DoorHinge.DOBlendableLocalRotateBy(rotation, OpenDoorDuration))
           .OnComplete(
               () => {
-                ToggleDoorColliders(toggleOn: true);
+                ToggleDoorColliders(interactAgent, toggleOn: true);
                 IsDoorOpen = isDoorOpen;
               })
           .SetUpdate(UpdateType.Fixed);
     }
 
-    void ToggleDoorColliders(bool toggleOn) {
+    void ToggleDoorColliders(GameObject interactAgent, bool toggleOn) {
+      if (!interactAgent.TryGetComponent(out Collider agentCollider)) {
+        return;
+      }
+
       foreach (Collider collider in DoorColliders) {
-        collider.enabled = toggleOn;
+        Physics.IgnoreCollision(collider, agentCollider, !toggleOn);
       }
     }
   }
