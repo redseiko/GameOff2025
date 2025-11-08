@@ -25,7 +25,7 @@ namespace GameJam {
 
     Sequence _openDoorSequence = default;
 
-    public void OpenDoor() {
+    public void OpenDoor(GameObject interactAgent) {
       if (_openDoorSequence.IsActive() && _openDoorSequence.IsComplete()) {
         return;
       }
@@ -41,7 +41,8 @@ namespace GameJam {
               () => {
                 ToggleDoorColliders(toggleOn: true);
                 IsDoorOpen = isDoorOpen;
-              });
+              })
+          .SetUpdate(UpdateType.Fixed);
     }
 
     void ToggleDoorColliders(bool toggleOn) {

@@ -1536,7 +1536,7 @@ MonoBehaviour:
       - m_Target: {fileID: 7061432419862351403}
         m_TargetAssemblyTypeName: GameJam.YoloDoor, GameJam
         m_MethodName: OpenDoor
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1838,7 +1838,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2704206104820324506}
         m_TargetAssemblyTypeName: GameJam.YoloDoor, GameJam
         m_MethodName: OpenDoor
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
