@@ -26,7 +26,7 @@ namespace GameJam {
     Sequence _openDoorSequence = default;
 
     public void OpenDoor(GameObject interactAgent) {
-      if (_openDoorSequence.IsActive() && _openDoorSequence.IsComplete()) {
+      if (_openDoorSequence.IsActive() && !_openDoorSequence.IsComplete()) {
         return;
       }
 
