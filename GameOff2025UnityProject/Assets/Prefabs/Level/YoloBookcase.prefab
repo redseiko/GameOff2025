@@ -562,8 +562,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: GameJam::GameJam.YoloDoor
   <DoorHinge>k__BackingField: {fileID: 328322533177360922}
+  <DoorColliders>k__BackingField:
+  - {fileID: 283990008220603742}
+  - {fileID: 2348974997823537183}
   <OpenDoorRotation>k__BackingField: {x: 0, y: 90, z: 0}
-  <OpenDoorDuration>k__BackingField: 0.6
+  <OpenDoorDuration>k__BackingField: 0.8
+  <IsDoorOpen>k__BackingField: 0
 --- !u!1 &2889709871368273718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1277,8 +1281,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: GameJam::GameJam.YoloDoor
   <DoorHinge>k__BackingField: {fileID: 139108336248488251}
+  <DoorColliders>k__BackingField:
+  - {fileID: 8091855011611885731}
+  - {fileID: 6928654000994938705}
   <OpenDoorRotation>k__BackingField: {x: 0, y: -90, z: 0}
-  <OpenDoorDuration>k__BackingField: 0.6
+  <OpenDoorDuration>k__BackingField: 0.8
+  <IsDoorOpen>k__BackingField: 0
 --- !u!1 &7485908712090821210
 GameObject:
   m_ObjectHideFlags: 0
