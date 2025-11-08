@@ -31,6 +31,9 @@ namespace GameJam {
     [field: SerializeField]
     public Interactable ClosestInteractable { get; private set; }
 
+    [field: SerializeField]
+    public Interactable CurrentHoldInteractable { get; private set; }
+
     void FixedUpdate() {
       UpdateRaycastHits(InteractAgent, InteractCamera, InteractRange);
       UpdateClosestInteractable();
@@ -41,6 +44,24 @@ namespace GameJam {
 
       if (interactable) {
         interactable.Interact(InteractAgent);
+      }
+    }
+
+    public void ProcessHoldInteractActionStart(InputAction.CallbackContext context = default) {
+      Interactable interactable = ClosestInteractable;
+
+      if (interactable) {
+        CurrentHoldInteractable = interactable;
+        interactable.HoldInteractStart(InteractAgent);
+      }
+    }
+
+    public void ProcessHoldInteractActionEnd(InputAction.CallbackContext context = default) {
+      Interactable interactable = CurrentHoldInteractable;
+
+      if (interactable) {
+        CurrentHoldInteractable = default;
+        interactable.HoldInteractEnd(InteractAgent);
       }
     }
 

@@ -33,6 +33,12 @@ namespace GameJam {
     [field: SerializeField]
     public UnityEvent<GameObject> OnInteract { get; private set; }
 
+    [field: SerializeField]
+    public UnityEvent<GameObject> OnHoldInteractStart { get; private set; }
+
+    [field: SerializeField]
+    public UnityEvent<GameObject> OnHoldInteractEnd { get; private set; }
+
     void Start() {
       ToggleHighlight(toggleOn: false);
     }
@@ -49,6 +55,14 @@ namespace GameJam {
 
     public void Interact(GameObject interactAgent) {
       OnInteract?.Invoke(interactAgent);
+    }
+
+    public void HoldInteractStart(GameObject interactAgent = default) {
+      OnHoldInteractStart?.Invoke(interactAgent);
+    }
+
+    public void HoldInteractEnd(GameObject interactAgent = default) {
+      OnHoldInteractEnd?.Invoke(interactAgent);
     }
   }
 }

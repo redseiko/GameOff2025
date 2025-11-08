@@ -10,6 +10,9 @@ namespace GameJam {
     public InputActionProperty InteractAction { get; private set; }
 
     [field: SerializeField]
+    public InputActionProperty HoldInteractAction { get; private set; }
+
+    [field: SerializeField]
     public InputActionProperty PickupAction { get; private set; }
 
     [field: SerializeField]
@@ -21,6 +24,10 @@ namespace GameJam {
 
     void Start() {
       InteractAction.action.performed += InteractManager.Instance.ProcessInteractAction;
+
+      HoldInteractAction.action.performed += InteractManager.Instance.ProcessHoldInteractActionStart;
+      HoldInteractAction.action.canceled += InteractManager.Instance.ProcessHoldInteractActionEnd;
+
       PickupAction.action.performed += HandManager.Instance.ProcessPickupAction;
       ToggleMenuAction.action.performed += UIManager.Instance.ProcessToggleMenuAction;
     }

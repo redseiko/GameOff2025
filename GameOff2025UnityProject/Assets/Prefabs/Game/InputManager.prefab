@@ -56,6 +56,18 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 1781555164194001046, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  <HoldInteractAction>k__BackingField:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Hold Interact
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 6d969189-976c-4301-a8c0-328679808be7
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 8171433262405843600, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   <PickupAction>k__BackingField:
     m_UseReference: 1
     m_Action:

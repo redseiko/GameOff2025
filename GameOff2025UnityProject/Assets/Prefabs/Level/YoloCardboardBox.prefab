@@ -153,6 +153,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2794930674148809006}
   - component: {fileID: 5433615416708318258}
+  - component: {fileID: 3425347469636913653}
+  - component: {fileID: 8632998204820252270}
+  - component: {fileID: 5122749101239111409}
   m_Layer: 0
   m_Name: YoloCardboardBox
   m_TagString: Untagged
@@ -209,6 +212,118 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3425347469636913653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3374950204599847153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ace9ec70e617a047ac77da26e8417a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.Interactable
+  <CanInteract>k__BackingField: 1
+  <InteractRange>k__BackingField: 2
+  <ShouldShowUI>k__BackingField: 1
+  <InteractText>k__BackingField: Cardboard Box
+  <InteractIcon>k__BackingField: {fileID: 0}
+  <HighlightOutline>k__BackingField: {fileID: 8632998204820252270}
+  <CanHighlight>k__BackingField: 1
+  <OnInteract>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  <OnHoldInteractStart>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5122749101239111409}
+        m_TargetAssemblyTypeName: GameJam.FlavorText, GameJam
+        m_MethodName: ShowPopupText
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  <OnHoldInteractEnd>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5122749101239111409}
+        m_TargetAssemblyTypeName: GameJam.FlavorText, GameJam
+        m_MethodName: ShowPopupText
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8632998204820252270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3374950204599847153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: QuickOutline::QuickOutline.Outline
+  outlineMode: 0
+  outlineColor: {r: 0.7529412, g: 0.5647059, b: 0, a: 1}
+  outlineWidth: 6
+  precomputeOutline: 1
+  bakeKeys:
+  - {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  bakeValues:
+  - data:
+    - {x: 0.57735026, y: -0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: -0.57735026, z: 0.57735026}
+    - {x: 0.57735026, y: 0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: 0.57735026, z: 0.57735026}
+    - {x: 0.57735026, y: 0.57735026, z: -0.57735026}
+    - {x: -0.57735026, y: 0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: -0.57735026, z: -0.57735026}
+    - {x: -0.57735026, y: -0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: 0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: 0.57735026, z: 0.57735026}
+    - {x: 0.57735026, y: 0.57735026, z: -0.57735026}
+    - {x: -0.57735026, y: 0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: -0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: -0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: -0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: -0.57735026, z: -0.57735026}
+    - {x: -0.57735026, y: -0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: 0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: 0.57735026, z: -0.57735026}
+    - {x: -0.57735026, y: -0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: -0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: 0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: 0.57735026, z: 0.57735026}
+    - {x: 0.57735026, y: -0.57735026, z: 0.57735026}
+--- !u!114 &5122749101239111409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3374950204599847153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0ebe5720354ec74b85835182a6b9aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.FlavorText
+  <PopupTexts>k__BackingField:
+  - You start to gaze at the cardboard box.
+  - It's just a cardboard box.
+  <PopupDuration>k__BackingField: 2
 --- !u!1 &3546449498346275892
 GameObject:
   m_ObjectHideFlags: 0

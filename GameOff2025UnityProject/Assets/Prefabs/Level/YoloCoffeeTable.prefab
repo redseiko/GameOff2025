@@ -414,6 +414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: GameJam::GameJam.Interactable
   <CanInteract>k__BackingField: 1
   <InteractRange>k__BackingField: 2
+  <ShouldShowUI>k__BackingField: 1
   <InteractText>k__BackingField: Coffee Table
   <InteractIcon>k__BackingField: {fileID: 0}
   <HighlightOutline>k__BackingField: {fileID: 522583243006844268}
@@ -424,7 +425,7 @@ MonoBehaviour:
       - m_Target: {fileID: 5974568166120929597}
         m_TargetAssemblyTypeName: GameJam.FlavorText, GameJam
         m_MethodName: ShowPopupText
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -433,6 +434,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  <OnHoldInteractStart>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  <OnHoldInteractEnd>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &522583243006844268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,7 +496,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ebe5720354ec74b85835182a6b9aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: GameJam::GameJam.FlavorText
-  <PopupText>k__BackingField: A rectangular coffee table.
+  <PopupTexts>k__BackingField:
+  - A rectangular coffee table.
   <PopupDuration>k__BackingField: 4
 --- !u!1 &5205115763890878797
 GameObject:
