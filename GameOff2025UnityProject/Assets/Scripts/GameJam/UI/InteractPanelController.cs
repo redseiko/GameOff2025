@@ -75,7 +75,7 @@ namespace GameJam {
 
       CurrentInteractable = interactable;
 
-      if (interactable) {
+      if (interactable && interactable.ShouldShowUI) {
         InteractText.text = interactable.InteractText;
 
         if (interactable.InteractIcon) {

@@ -524,6 +524,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 328322533177360922}
+  - component: {fileID: 2704206104820324506}
   m_Layer: 0
   m_Name: LeftDoorHinge
   m_TagString: Untagged
@@ -548,6 +549,21 @@ Transform:
   - {fileID: 3858957901782391311}
   m_Father: {fileID: 7786524292654421990}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2704206104820324506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911324642286782402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 003a8d63dd5aa4a448926a571432f6a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.YoloDoor
+  <DoorHinge>k__BackingField: {fileID: 328322533177360922}
+  <OpenDoorRotation>k__BackingField: {x: 0, y: 90, z: 0}
+  <OpenDoorDuration>k__BackingField: 0.6
 --- !u!1 &2889709871368273718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1223,6 +1239,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 139108336248488251}
+  - component: {fileID: 7061432419862351403}
   m_Layer: 0
   m_Name: RightDoorHinge
   m_TagString: Untagged
@@ -1247,6 +1264,21 @@ Transform:
   - {fileID: 6914521252438772554}
   m_Father: {fileID: 7786524292654421990}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7061432419862351403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7225830297356225604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 003a8d63dd5aa4a448926a571432f6a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.YoloDoor
+  <DoorHinge>k__BackingField: {fileID: 139108336248488251}
+  <OpenDoorRotation>k__BackingField: {x: 0, y: -90, z: 0}
+  <OpenDoorDuration>k__BackingField: 0.6
 --- !u!1 &7485908712090821210
 GameObject:
   m_ObjectHideFlags: 0
@@ -1370,6 +1402,8 @@ GameObject:
   - component: {fileID: 8546721838414305981}
   - component: {fileID: 3549307702773328693}
   - component: {fileID: 6928654000994938705}
+  - component: {fileID: 7716498678221911271}
+  - component: {fileID: 42283170748167548}
   m_Layer: 0
   m_Name: RightDoorKnob
   m_TagString: Untagged
@@ -1469,6 +1503,84 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7716498678221911271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8144922879270184610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ace9ec70e617a047ac77da26e8417a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.Interactable
+  <CanInteract>k__BackingField: 1
+  <InteractRange>k__BackingField: 2
+  <ShouldShowUI>k__BackingField: 0
+  <InteractText>k__BackingField: DoorKnob
+  <InteractIcon>k__BackingField: {fileID: 0}
+  <HighlightOutline>k__BackingField: {fileID: 42283170748167548}
+  <CanHighlight>k__BackingField: 1
+  <OnInteract>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7061432419862351403}
+        m_TargetAssemblyTypeName: GameJam.YoloDoor, GameJam
+        m_MethodName: OpenDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &42283170748167548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8144922879270184610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: QuickOutline::QuickOutline.Outline
+  outlineMode: 0
+  outlineColor: {r: 0.7529412, g: 0.5647059, b: 0, a: 1}
+  outlineWidth: 6
+  precomputeOutline: 1
+  bakeKeys:
+  - {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  bakeValues:
+  - data:
+    - {x: 0.57735026, y: -0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: -0.57735026, z: 0.57735026}
+    - {x: 0.57735026, y: 0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: 0.57735026, z: 0.57735026}
+    - {x: 0.57735026, y: 0.57735026, z: -0.57735026}
+    - {x: -0.57735026, y: 0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: -0.57735026, z: -0.57735026}
+    - {x: -0.57735026, y: -0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: 0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: 0.57735026, z: 0.57735026}
+    - {x: 0.57735026, y: 0.57735026, z: -0.57735026}
+    - {x: -0.57735026, y: 0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: -0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: -0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: -0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: -0.57735026, z: -0.57735026}
+    - {x: -0.57735026, y: -0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: 0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: 0.57735026, z: -0.57735026}
+    - {x: -0.57735026, y: -0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: -0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: 0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: 0.57735026, z: 0.57735026}
+    - {x: 0.57735026, y: -0.57735026, z: 0.57735026}
 --- !u!1 &8203036316060344070
 GameObject:
   m_ObjectHideFlags: 0
@@ -1592,6 +1704,8 @@ GameObject:
   - component: {fileID: 3919842279947274557}
   - component: {fileID: 6100353185311329054}
   - component: {fileID: 2348974997823537183}
+  - component: {fileID: 8069771796426016311}
+  - component: {fileID: 6650662649085903498}
   m_Layer: 0
   m_Name: LeftDoorKnob
   m_TagString: Untagged
@@ -1691,3 +1805,81 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8069771796426016311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8703942635591719867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ace9ec70e617a047ac77da26e8417a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.Interactable
+  <CanInteract>k__BackingField: 1
+  <InteractRange>k__BackingField: 2
+  <ShouldShowUI>k__BackingField: 0
+  <InteractText>k__BackingField: DoorKnob
+  <InteractIcon>k__BackingField: {fileID: 0}
+  <HighlightOutline>k__BackingField: {fileID: 6650662649085903498}
+  <CanHighlight>k__BackingField: 1
+  <OnInteract>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2704206104820324506}
+        m_TargetAssemblyTypeName: GameJam.YoloDoor, GameJam
+        m_MethodName: OpenDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6650662649085903498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8703942635591719867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: QuickOutline::QuickOutline.Outline
+  outlineMode: 0
+  outlineColor: {r: 0.7529412, g: 0.5647059, b: 0, a: 1}
+  outlineWidth: 6
+  precomputeOutline: 1
+  bakeKeys:
+  - {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  bakeValues:
+  - data:
+    - {x: 0.57735026, y: -0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: -0.57735026, z: 0.57735026}
+    - {x: 0.57735026, y: 0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: 0.57735026, z: 0.57735026}
+    - {x: 0.57735026, y: 0.57735026, z: -0.57735026}
+    - {x: -0.57735026, y: 0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: -0.57735026, z: -0.57735026}
+    - {x: -0.57735026, y: -0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: 0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: 0.57735026, z: 0.57735026}
+    - {x: 0.57735026, y: 0.57735026, z: -0.57735026}
+    - {x: -0.57735026, y: 0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: -0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: -0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: -0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: -0.57735026, z: -0.57735026}
+    - {x: -0.57735026, y: -0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: 0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: 0.57735026, z: -0.57735026}
+    - {x: -0.57735026, y: -0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: -0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: 0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: 0.57735026, z: 0.57735026}
+    - {x: 0.57735026, y: -0.57735026, z: 0.57735026}

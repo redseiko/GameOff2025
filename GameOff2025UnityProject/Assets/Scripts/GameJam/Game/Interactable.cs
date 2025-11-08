@@ -12,6 +12,10 @@ namespace GameJam {
     [field: SerializeField]
     public float InteractRange { get; set; } = 5f;
 
+    [field: Header("UI")]
+    [field: SerializeField]
+    public bool ShouldShowUI { get; set; } = true;
+
     [field: SerializeField]
     public string InteractText { get; set; } = "...";
 
