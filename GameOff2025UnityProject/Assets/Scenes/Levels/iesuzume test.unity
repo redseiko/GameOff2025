@@ -329,7 +329,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: GameJam::GameJam.YoloDebuggable
   <Message>k__BackingField: yolooo (held)
---- !u!1001 &536528849
+--- !u!1 &566507499 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7775340528767400305, guid: 38d363ba6b25e134f8515659bae4a6f4, type: 3}
+  m_PrefabInstance: {fileID: 980555076}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &566507500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566507499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c0f046b77bcba4faa0cb7e3d907df0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.TriggerableTweenable
+  <TranslateBy>k__BackingField: {x: 0, y: 1, z: 0}
+  <RotateBy>k__BackingField: {x: 0, y: 0, z: 0}
+  <ScaleBy>k__BackingField: {x: 0, y: 0, z: 0}
+  <IsContinuous>k__BackingField: 0
+--- !u!1001 &980555076
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -337,70 +358,58 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 746192076742264095, guid: 76e1039fd4c0c314db5702dd61ed2832, type: 3}
-      propertyPath: m_Name
-      value: YoloLamp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7065614401981181613, guid: 76e1039fd4c0c314db5702dd61ed2832, type: 3}
+    - target: {fileID: 3564427299050565431, guid: 38d363ba6b25e134f8515659bae4a6f4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.9748322
+      value: 2.974
       objectReference: {fileID: 0}
-    - target: {fileID: 7065614401981181613, guid: 76e1039fd4c0c314db5702dd61ed2832, type: 3}
+    - target: {fileID: 3564427299050565431, guid: 38d363ba6b25e134f8515659bae4a6f4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.672
+      value: 0.000004053116
       objectReference: {fileID: 0}
-    - target: {fileID: 7065614401981181613, guid: 76e1039fd4c0c314db5702dd61ed2832, type: 3}
+    - target: {fileID: 3564427299050565431, guid: 38d363ba6b25e134f8515659bae4a6f4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.9406414
+      value: 2.785
       objectReference: {fileID: 0}
-    - target: {fileID: 7065614401981181613, guid: 76e1039fd4c0c314db5702dd61ed2832, type: 3}
+    - target: {fileID: 3564427299050565431, guid: 38d363ba6b25e134f8515659bae4a6f4, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7065614401981181613, guid: 76e1039fd4c0c314db5702dd61ed2832, type: 3}
+    - target: {fileID: 3564427299050565431, guid: 38d363ba6b25e134f8515659bae4a6f4, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7065614401981181613, guid: 76e1039fd4c0c314db5702dd61ed2832, type: 3}
+    - target: {fileID: 3564427299050565431, guid: 38d363ba6b25e134f8515659bae4a6f4, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7065614401981181613, guid: 76e1039fd4c0c314db5702dd61ed2832, type: 3}
+    - target: {fileID: 3564427299050565431, guid: 38d363ba6b25e134f8515659bae4a6f4, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7065614401981181613, guid: 76e1039fd4c0c314db5702dd61ed2832, type: 3}
+    - target: {fileID: 3564427299050565431, guid: 38d363ba6b25e134f8515659bae4a6f4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7065614401981181613, guid: 76e1039fd4c0c314db5702dd61ed2832, type: 3}
+    - target: {fileID: 3564427299050565431, guid: 38d363ba6b25e134f8515659bae4a6f4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7065614401981181613, guid: 76e1039fd4c0c314db5702dd61ed2832, type: 3}
+    - target: {fileID: 3564427299050565431, guid: 38d363ba6b25e134f8515659bae4a6f4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775340528767400305, guid: 38d363ba6b25e134f8515659bae4a6f4, type: 3}
+      propertyPath: m_Name
+      value: YoloOttoman
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 746192076742264095, guid: 76e1039fd4c0c314db5702dd61ed2832, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 7775340528767400305, guid: 38d363ba6b25e134f8515659bae4a6f4, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1987326393}
-    - targetCorrespondingSourceObject: {fileID: 746192076742264095, guid: 76e1039fd4c0c314db5702dd61ed2832, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1987326392}
-    - targetCorrespondingSourceObject: {fileID: 746192076742264095, guid: 76e1039fd4c0c314db5702dd61ed2832, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1987326391}
-    - targetCorrespondingSourceObject: {fileID: 746192076742264095, guid: 76e1039fd4c0c314db5702dd61ed2832, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1987326390}
-    - targetCorrespondingSourceObject: {fileID: 746192076742264095, guid: 76e1039fd4c0c314db5702dd61ed2832, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1987326389}
-  m_SourcePrefab: {fileID: 100100000, guid: 76e1039fd4c0c314db5702dd61ed2832, type: 3}
+      addedObject: {fileID: 566507500}
+  m_SourcePrefab: {fileID: 100100000, guid: 38d363ba6b25e134f8515659bae4a6f4, type: 3}
 --- !u!114 &1014210253 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 642353977728957908, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
@@ -412,50 +421,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ace9ec70e617a047ac77da26e8417a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: GameJam::GameJam.Interactable
---- !u!1 &1186731938
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1186731940}
-  - component: {fileID: 1186731939}
-  m_Layer: 0
-  m_Name: YoloLevelEventDescriptor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1186731939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1186731938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1524d24611cddb469945aed06636e1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: GameJam::GameJam.YoloLevelEventDescriptor
---- !u!4 &1186731940
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1186731938}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.34448, y: 0.525, z: 3.21745}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1442870990
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,6 +534,243 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1488709677
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4717289039693940885, guid: dd86a77f9f7db154ebf810bba51cf1b0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.014
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717289039693940885, guid: dd86a77f9f7db154ebf810bba51cf1b0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.554
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717289039693940885, guid: dd86a77f9f7db154ebf810bba51cf1b0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.843
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717289039693940885, guid: dd86a77f9f7db154ebf810bba51cf1b0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717289039693940885, guid: dd86a77f9f7db154ebf810bba51cf1b0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717289039693940885, guid: dd86a77f9f7db154ebf810bba51cf1b0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717289039693940885, guid: dd86a77f9f7db154ebf810bba51cf1b0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717289039693940885, guid: dd86a77f9f7db154ebf810bba51cf1b0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717289039693940885, guid: dd86a77f9f7db154ebf810bba51cf1b0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4717289039693940885, guid: dd86a77f9f7db154ebf810bba51cf1b0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282554659882686076, guid: dd86a77f9f7db154ebf810bba51cf1b0, type: 3}
+      propertyPath: m_Name
+      value: YoloWheel
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8282554659882686076, guid: dd86a77f9f7db154ebf810bba51cf1b0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1780140281}
+    - targetCorrespondingSourceObject: {fileID: 8282554659882686076, guid: dd86a77f9f7db154ebf810bba51cf1b0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1780140280}
+    - targetCorrespondingSourceObject: {fileID: 8282554659882686076, guid: dd86a77f9f7db154ebf810bba51cf1b0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1780140279}
+  m_SourcePrefab: {fileID: 100100000, guid: dd86a77f9f7db154ebf810bba51cf1b0, type: 3}
+--- !u!1 &1780140278 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8282554659882686076, guid: dd86a77f9f7db154ebf810bba51cf1b0, type: 3}
+  m_PrefabInstance: {fileID: 1488709677}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1780140279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780140278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c0f046b77bcba4faa0cb7e3d907df0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.TriggerableTweenable
+  <TranslateBy>k__BackingField: {x: 0, y: 0, z: 0}
+  <RotateBy>k__BackingField: {x: 0, y: 0, z: 90}
+  <ScaleBy>k__BackingField: {x: 0, y: 0, z: 0}
+  <IsContinuous>k__BackingField: 1
+--- !u!114 &1780140280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780140278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70d36236ded5b7e47bcde2d2ef47439a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.HoldableState
+  <HoldDuration>k__BackingField: 5
+  <OnHoldingTriggerInterval>k__BackingField: 0.25
+  <OnHoldStart>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1780140279}
+        m_TargetAssemblyTypeName: GameJam.TriggerableTweenable, GameJam
+        m_MethodName: TriggerTween
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.25
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 566507500}
+        m_TargetAssemblyTypeName: GameJam.TriggerableTweenable, GameJam
+        m_MethodName: TriggerTween
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  <OnHolding>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  <OnHoldInterrupted>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1780140279}
+        m_TargetAssemblyTypeName: GameJam.TriggerableTweenable, GameJam
+        m_MethodName: PauseTween
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 566507500}
+        m_TargetAssemblyTypeName: GameJam.TriggerableTweenable, GameJam
+        m_MethodName: PauseTween
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  <OnHoldComplete>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1780140279}
+        m_TargetAssemblyTypeName: GameJam.TriggerableTweenable, GameJam
+        m_MethodName: PauseTween
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 566507500}
+        m_TargetAssemblyTypeName: GameJam.TriggerableTweenable, GameJam
+        m_MethodName: PauseTween
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1780140281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780140278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ace9ec70e617a047ac77da26e8417a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.Interactable
+  <CanInteract>k__BackingField: 1
+  <InteractRange>k__BackingField: 5
+  <ShouldShowUI>k__BackingField: 1
+  <InteractText>k__BackingField: ...
+  <InteractIcon>k__BackingField: {fileID: 0}
+  <HighlightOutline>k__BackingField: {fileID: 0}
+  <CanHighlight>k__BackingField: 1
+  <OnInteract>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  <OnHoldInteractStart>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1780140280}
+        m_TargetAssemblyTypeName: GameJam.HoldableState, GameJam
+        m_MethodName: StartHold
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  <OnHoldInteractEnd>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1780140280}
+        m_TargetAssemblyTypeName: GameJam.HoldableState, GameJam
+        m_MethodName: StopHold
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1921024223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -634,161 +836,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
---- !u!1 &1987326388 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 746192076742264095, guid: 76e1039fd4c0c314db5702dd61ed2832, type: 3}
-  m_PrefabInstance: {fileID: 536528849}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1987326389
-MonoBehaviour:
+--- !u!1001 &1936795137
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1987326388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed75e41506dfbb84ba0361a60a9d3337, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: GameJam::GameJam.YoloDebuggable
-  <Message>k__BackingField: yolo hold end
---- !u!114 &1987326390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1987326388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed75e41506dfbb84ba0361a60a9d3337, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: GameJam::GameJam.YoloDebuggable
-  <Message>k__BackingField: yolo holding...
---- !u!114 &1987326391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1987326388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed75e41506dfbb84ba0361a60a9d3337, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: GameJam::GameJam.YoloDebuggable
-  <Message>k__BackingField: yolo start hold
---- !u!114 &1987326392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1987326388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70d36236ded5b7e47bcde2d2ef47439a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: GameJam::GameJam.HoldableState
-  <HoldDuration>k__BackingField: -1
-  <OnHoldingTriggerInterval>k__BackingField: 0.25
-  <OnHoldStart>k__BackingField:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1987326391}
-        m_TargetAssemblyTypeName: GameJam.YoloDebuggable, GameJam
-        m_MethodName: Log
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  <OnHolding>k__BackingField:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1987326390}
-        m_TargetAssemblyTypeName: GameJam.YoloDebuggable, GameJam
-        m_MethodName: Log
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  <OnHoldComplete>k__BackingField:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1987326389}
-        m_TargetAssemblyTypeName: GameJam.YoloDebuggable, GameJam
-        m_MethodName: Log
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1987326393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1987326388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ace9ec70e617a047ac77da26e8417a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: GameJam::GameJam.Interactable
-  <CanInteract>k__BackingField: 1
-  <InteractRange>k__BackingField: 5
-  <ShouldShowUI>k__BackingField: 1
-  <InteractText>k__BackingField: ...
-  <InteractIcon>k__BackingField: {fileID: 0}
-  <HighlightOutline>k__BackingField: {fileID: 0}
-  <CanHighlight>k__BackingField: 1
-  <OnInteract>k__BackingField:
-    m_PersistentCalls:
-      m_Calls: []
-  <OnHoldInteractStart>k__BackingField:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1987326392}
-        m_TargetAssemblyTypeName: GameJam.HoldableState, GameJam
-        m_MethodName: StartHold
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  <OnHoldInteractEnd>k__BackingField:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1987326392}
-        m_TargetAssemblyTypeName: GameJam.HoldableState, GameJam
-        m_MethodName: StopHold
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4301217578474654499, guid: 38b33ba2a29ab90469a63d4205d4c798, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.14854
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301217578474654499, guid: 38b33ba2a29ab90469a63d4205d4c798, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.00000071525574
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301217578474654499, guid: 38b33ba2a29ab90469a63d4205d4c798, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.9542713
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301217578474654499, guid: 38b33ba2a29ab90469a63d4205d4c798, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301217578474654499, guid: 38b33ba2a29ab90469a63d4205d4c798, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301217578474654499, guid: 38b33ba2a29ab90469a63d4205d4c798, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301217578474654499, guid: 38b33ba2a29ab90469a63d4205d4c798, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301217578474654499, guid: 38b33ba2a29ab90469a63d4205d4c798, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301217578474654499, guid: 38b33ba2a29ab90469a63d4205d4c798, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301217578474654499, guid: 38b33ba2a29ab90469a63d4205d4c798, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8533297394277194269, guid: 38b33ba2a29ab90469a63d4205d4c798, type: 3}
+      propertyPath: m_Name
+      value: YoloBackrest
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 38b33ba2a29ab90469a63d4205d4c798, type: 3}
 --- !u!1 &2032538669 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4279273382838388534, guid: 73eaea2cedaa4da489a647f5f269e2c3, type: 3}
@@ -1032,6 +1136,7 @@ SceneRoots:
   - {fileID: 1921024223}
   - {fileID: 861606}
   - {fileID: 3011105145747268558}
-  - {fileID: 1186731940}
   - {fileID: 1442870995}
-  - {fileID: 536528849}
+  - {fileID: 1936795137}
+  - {fileID: 1488709677}
+  - {fileID: 980555076}
