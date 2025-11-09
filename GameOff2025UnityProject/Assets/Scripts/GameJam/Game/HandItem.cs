@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 using DG.Tweening;
 
 using UnityEngine;
@@ -20,6 +22,7 @@ namespace GameJam {
     public bool IsPickedUp { get; private set; } = false;
 
     int _constraintIndex = -1;
+    readonly List<HandItem> _childHandItems = new();
 
     public void Pickup(GameObject interactAgent) {
       if (IsPickedUp) {
@@ -27,6 +30,14 @@ namespace GameJam {
       }
 
       IsPickedUp = true;
+
+      HandManager.Instance.FindChildHandItems(this, _childHandItems);
+
+      foreach (HandItem childHandItem in _childHandItems) {
+        childHandItem.SetIsKinematic(true);
+        childHandItem.ToggleColliders(toggleOn: false);
+        childHandItem.transform.parent = transform;
+      }
 
       AddParentConstraint(interactAgent);
       SetIsKinematic(true);
@@ -42,16 +53,24 @@ namespace GameJam {
       SetIsKinematic(false);
       ToggleColliders(toggleOn: true);
 
+      foreach (HandItem childHandItem in _childHandItems) {
+        childHandItem.SetIsKinematic(false);
+        childHandItem.ToggleColliders(true);
+        childHandItem.transform.parent = default;
+      }
+
+      _childHandItems.Clear();
+
       IsPickedUp = false;
     }
 
-    void SetIsKinematic(bool isKinematic) {
+    public void SetIsKinematic(bool isKinematic) {
       foreach (Rigidbody rigidbody in GetComponentsInChildren<Rigidbody>()) {
         rigidbody.isKinematic = isKinematic;
       }
     }
 
-    void ToggleColliders(bool toggleOn) {
+    public void ToggleColliders(bool toggleOn) {
       foreach (Collider collider in GetComponentsInChildren<Collider>()) {
         collider.enabled = toggleOn;
       }

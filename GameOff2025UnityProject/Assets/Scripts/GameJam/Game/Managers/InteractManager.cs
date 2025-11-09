@@ -89,14 +89,14 @@ namespace GameJam {
       Debug.DrawRay(origin.position, origin.forward * InteractRange, Color.red);
 
       _raycastHitsCount =
-        Physics.SphereCastNonAlloc(
-          origin.position,
-          SphereCastRadius,
-          origin.forward,
-          _raycastHits,
-          range,
-          SphereCastLayerMask,
-          QueryTriggerInteraction.Ignore);
+          Physics.SphereCastNonAlloc(
+              origin.position,
+              SphereCastRadius,
+              origin.forward,
+              _raycastHits,
+              range,
+              SphereCastLayerMask,
+              QueryTriggerInteraction.Ignore);
 
       for (int i = 0; i < _raycastHitsCount; i++) {
         _hitDistanceCache[i] = _raycastHits[i].distance;

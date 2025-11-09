@@ -7,6 +7,10 @@ using YoloBox;
 
 namespace GameJam {
   public sealed class HandManager : SingletonManager<HandManager> {
+    [field: Header("HandItem")]
+    [field: SerializeField]
+    public LayerMask HandItemsLayerMask { get; private set; }
+
     [field: Header("State")]
     [field: SerializeField]
     public List<Interactable> CurrentInteractables { get; private set; } = new();
@@ -74,6 +78,35 @@ namespace GameJam {
       }
 
       interactable.CanInteract = true;
+    }
+
+    int _overlapBoxHitsCount = 0;
+    readonly Collider[] _overlapBoxHits = new Collider[100];
+
+    public int FindChildHandItems(HandItem parentHandItem, List<HandItem> childHandItems) {
+      Transform parentTransform = parentHandItem.transform;
+      childHandItems.Clear();
+
+      _overlapBoxHitsCount =
+          Physics.OverlapBoxNonAlloc(
+              parentTransform.position,
+              parentTransform.localScale / 2f,
+              _overlapBoxHits,
+              parentTransform.rotation,
+              HandItemsLayerMask,
+              QueryTriggerInteraction.Ignore);
+
+      for (int i = 0; i < _overlapBoxHitsCount; i++) {
+        HandItem childHandItem = _overlapBoxHits[i].GetComponentInParent<HandItem>();
+
+        if (!childHandItem || childHandItem == parentHandItem) {
+          continue;
+        }
+
+        childHandItems.Add(childHandItem);
+      }
+
+      return childHandItems.Count;
     }
   }
 }

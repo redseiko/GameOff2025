@@ -44,3 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7430db4c9b6b94a42a1a604abd909c06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: GameJam::GameJam.HandManager
+  <HandItemsLayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 17
+  <CurrentInteractables>k__BackingField: []
