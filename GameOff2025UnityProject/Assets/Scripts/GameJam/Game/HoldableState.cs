@@ -20,6 +20,9 @@ namespace GameJam {
     public UnityEvent<GameObject> OnHolding { get; private set; }
 
     [field: SerializeField]
+    public UnityEvent<GameObject> OnHoldInterrupted { get; private set; }
+
+    [field: SerializeField]
     public UnityEvent<GameObject> OnHoldComplete { get; private set; }
 
     private bool _active = false;
@@ -39,6 +42,9 @@ namespace GameJam {
 
     public void StopHold() {
       _active = false;
+      if (!_complete) {
+        OnHoldInterrupted?.Invoke(this.gameObject);
+      }
     }
 
     public void FixedUpdate() {
