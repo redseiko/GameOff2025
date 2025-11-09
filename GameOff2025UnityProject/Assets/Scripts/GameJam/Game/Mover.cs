@@ -8,6 +8,7 @@ using YoloBox;
 
 namespace GameJam {
   public class Mover : MonoBehaviour {
+    [field: Header("Movement")]
     [field: SerializeField]
     public Vector3 TranslateBy { get; private set; } = Vector3.zero;
 
@@ -17,8 +18,9 @@ namespace GameJam {
     [field: SerializeField]
     public Vector3 ScaleBy { get; private set; } = Vector3.zero;
 
+    [field: Header("Behaviour")]
     [field: SerializeField]
-    public bool IsContinuous { get; private set; } = false;
+    public bool Continuous { get; private set; } = false;
 
     [field: SerializeField]
     public Ease EaseMethod { get; private set; } = Ease.Unset;
@@ -27,7 +29,7 @@ namespace GameJam {
 
     public void TriggerTween(float duration) {
       if (_tweenSequence.IsActive()) {
-        if (!IsContinuous && _tweenSequence.IsComplete()) {
+        if (!Continuous && _tweenSequence.IsComplete()) {
           return;
         } else if (!_tweenSequence.IsPlaying()) {
           _tweenSequence.PlayForward();
@@ -40,14 +42,14 @@ namespace GameJam {
           .SetAutoKill(false)
           .SetUpdate(UpdateType.Fixed);
 
-        if (IsContinuous) {
+        if (Continuous) {
           _tweenSequence.AppendCallback(_tweenSequence.PlayAgain);
         }
       }
     }
 
     public void PauseTween() {
-      if (!_tweenSequence.IsActive() || (!IsContinuous && _tweenSequence.IsComplete())) {
+      if (!_tweenSequence.IsActive() || (!Continuous && _tweenSequence.IsComplete())) {
         return;
       }
 
