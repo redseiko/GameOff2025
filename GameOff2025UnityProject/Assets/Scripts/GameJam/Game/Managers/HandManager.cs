@@ -94,8 +94,8 @@ namespace GameJam {
 
       _overlapBoxHitsCount =
           Physics.OverlapBoxNonAlloc(
-              parentTransform.position + parentHandItem.OverlapBoxCenter,
-              parentHandItem.OverlapBoxSize / 2f,
+              parentTransform.position + Vector3.Scale(parentHandItem.OverlapBoxCenter, parentTransform.localScale),
+              Vector3.Scale(parentHandItem.OverlapBoxSize, parentTransform.localScale) / 2f,
               _overlapBoxHits,
               parentTransform.rotation,
               HandItemsLayerMask,

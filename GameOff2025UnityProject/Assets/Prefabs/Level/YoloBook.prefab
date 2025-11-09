@@ -256,6 +256,9 @@ MonoBehaviour:
   <PickupPositionOffset>k__BackingField: {x: 0, y: 0, z: 0.5}
   <PickupRotationOffset>k__BackingField: {x: 0, y: 0, z: 0}
   <CanPickup>k__BackingField: 1
+  <HasOverlapBox>k__BackingField: 1
+  <OverlapBoxCenter>k__BackingField: {x: 0, y: 1, z: 0}
+  <OverlapBoxSize>k__BackingField: {x: 1, y: 1, z: 1}
   <IsPickedUp>k__BackingField: 0
 --- !u!114 &921524384565725235
 MonoBehaviour:
