@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8609951513722770488}
   - component: {fileID: 7409753389373722081}
   - component: {fileID: 3338292915527495642}
+  - component: {fileID: 921524384565725235}
   m_Layer: 0
   m_Name: YoloBook
   m_TagString: Untagged
@@ -164,6 +165,24 @@ MonoBehaviour:
   <CanHighlight>k__BackingField: 1
   <OnInteract>k__BackingField:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 921524384565725235}
+        m_TargetAssemblyTypeName: GameJam.YoloBook, GameJam
+        m_MethodName: ShowBookDialogNode
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  <OnHoldInteractStart>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  <OnHoldInteractEnd>k__BackingField:
+    m_PersistentCalls:
       m_Calls: []
 --- !u!114 &8609951513722770488
 MonoBehaviour:
@@ -238,3 +257,16 @@ MonoBehaviour:
   <PickupRotationOffset>k__BackingField: {x: 0, y: 0, z: 0}
   <CanPickup>k__BackingField: 1
   <IsPickedUp>k__BackingField: 0
+--- !u!114 &921524384565725235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6828127394486398382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a65a74f39ff7af447a08444b5169125f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.YoloBook
+  <BookDialogNodes>k__BackingField: []

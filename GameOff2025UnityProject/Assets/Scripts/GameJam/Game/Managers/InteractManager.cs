@@ -40,6 +40,10 @@ namespace GameJam {
     }
 
     public void ProcessInteractAction(InputAction.CallbackContext context = default) {
+      if (!InputManager.Instance.IsCursorLocked) {
+        return;
+      }
+
       Interactable interactable = ClosestInteractable;
 
       if (interactable) {
@@ -48,6 +52,10 @@ namespace GameJam {
     }
 
     public void ProcessHoldInteractActionStart(InputAction.CallbackContext context = default) {
+      if (!InputManager.Instance.IsCursorLocked) {
+        return;
+      }
+
       Interactable interactable = ClosestInteractable;
 
       if (interactable) {

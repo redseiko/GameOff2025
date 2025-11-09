@@ -37,15 +37,15 @@ namespace GameJam {
     }
 
     void UpdateCursorLockState() {
-      if (ShouldLockCursor()) {
-        LockCursor();
-      } else {
+      if (ShouldUnlockCursor()) {
         UnlockCursor();
+      } else {
+        LockCursor();
       }
     }
 
-    public bool ShouldLockCursor() {
-      return true;
+    public bool ShouldUnlockCursor() {
+      return UIManager.Instance.ShouldUnlockCursor();
     }
 
     public void LockCursor() {

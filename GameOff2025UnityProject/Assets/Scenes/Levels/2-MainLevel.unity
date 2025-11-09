@@ -127,6 +127,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 921524384565725235, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: <BookDialogNodes>k__BackingField.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 921524384565725235, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
+      propertyPath: '<BookDialogNodes>k__BackingField.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 85295df1b97056c439bb91220082deab, type: 2}
     - target: {fileID: 1009173377588578888, guid: fce59b0c806c1fd4aa0d669770661c83, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5

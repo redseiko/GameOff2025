@@ -1,3 +1,5 @@
+using DS.ScriptableObjects;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -33,6 +35,10 @@ namespace GameJam {
 
     public void SetInteractable(Interactable interactable, bool forceRefresh = false) {
       InteractPanel.SetInteractable(interactable, forceRefresh);
+    }
+
+    public void ShowDialogNode(DSDialogueSO dialogNode) {
+      DialogPanel.ShowDialogNode(dialogNode);
     }
 
     public void ShowPopupText(string popupText, float duration) {
