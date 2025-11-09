@@ -17,6 +17,16 @@ namespace GameJam {
     [field: SerializeField]
     public bool CanPickup { get; set; } = true;
 
+    [field: Header("OverlapBox")]
+    [field: SerializeField]
+    public bool HasOverlapBox { get; private set; } = false;
+
+    [field: SerializeField]
+    public Vector3 OverlapBoxCenter { get; private set; }
+
+    [field: SerializeField]
+    public Vector3 OverlapBoxSize { get; private set; }
+
     [field: Header("State")]
     [field: SerializeField]
     public bool IsPickedUp { get; private set; } = false;
@@ -113,6 +123,13 @@ namespace GameJam {
       if (parentConstraint.sourceCount <= 0) {
         Destroy(parentConstraint);
       }
+    }
+
+    void OnDrawGizmosSelected() {
+      if (Application.isPlaying) {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position + OverlapBoxCenter, OverlapBoxSize);
+      }  
     }
   }
 }

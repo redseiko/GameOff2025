@@ -83,14 +83,19 @@ namespace GameJam {
     int _overlapBoxHitsCount = 0;
     readonly Collider[] _overlapBoxHits = new Collider[100];
 
-    public int FindChildHandItems(HandItem parentHandItem, List<HandItem> childHandItems) {
-      Transform parentTransform = parentHandItem.transform;
+    public int FindChildHandItems(HandItem parentHandItem, List<HandItem> childHandItems) {      
       childHandItems.Clear();
+
+      if (!parentHandItem.HasOverlapBox) {
+        return 0;
+      }
+
+      Transform parentTransform = parentHandItem.transform;
 
       _overlapBoxHitsCount =
           Physics.OverlapBoxNonAlloc(
-              parentTransform.position,
-              parentTransform.localScale / 2f,
+              parentTransform.position + parentHandItem.OverlapBoxCenter,
+              parentHandItem.OverlapBoxSize / 2f,
               _overlapBoxHits,
               parentTransform.rotation,
               HandItemsLayerMask,
