@@ -44,7 +44,7 @@ namespace GameJam {
     }
 
     public void HidePanel() {
-      PanelCanvasGroup.DOComplete(withCallbacks: false);
+      PanelCanvasGroup.DOComplete(withCallbacks: true);
 
       PanelCanvasGroup.blocksRaycasts = false;
       IsPanelVisible = false;
