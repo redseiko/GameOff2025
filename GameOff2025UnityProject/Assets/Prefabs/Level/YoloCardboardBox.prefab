@@ -24,14 +24,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1566408801123364238}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
   m_LocalPosition: {x: 0, y: 0.305, z: -0.145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4394622779879378751}
   m_Father: {fileID: 2794930674148809006}
-  m_LocalEulerAnglesHint: {x: -45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
 --- !u!1 &2136079579670848040
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,6 +340,9 @@ MonoBehaviour:
   <PickupPositionOffset>k__BackingField: {x: 0, y: 0, z: 1}
   <PickupRotationOffset>k__BackingField: {x: 0, y: 0, z: 0}
   <CanPickup>k__BackingField: 1
+  <HasOverlapBox>k__BackingField: 1
+  <OverlapBoxCenter>k__BackingField: {x: 0, y: 0.15, z: 0}
+  <OverlapBoxSize>k__BackingField: {x: 0.43, y: 0.29, z: 0.29}
   <IsPickedUp>k__BackingField: 0
 --- !u!1 &3546449498346275892
 GameObject:
@@ -814,7 +817,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.07}
-  m_LocalScale: {x: 0.45, y: 0.01, z: 0.15}
+  m_LocalScale: {x: 0.43, y: 0.01, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2730475966807798002}
@@ -920,14 +923,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8073092886784697720}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.5, y: 0, z: 0, w: 0.8660254}
   m_LocalPosition: {x: 0, y: 0.305, z: 0.145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3687158305025153542}
   m_Father: {fileID: 2794930674148809006}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -60, y: 0, z: 0}
 --- !u!1 &9029074846537107718
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,7 +960,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.07}
-  m_LocalScale: {x: 0.45, y: 0.01, z: 0.15}
+  m_LocalScale: {x: 0.43, y: 0.01, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6710328726414497332}
