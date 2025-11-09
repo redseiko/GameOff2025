@@ -20,6 +20,9 @@ namespace GameJam {
     [field: SerializeField]
     public bool IsContinuous { get; private set; } = false;
 
+    [field: SerializeField]
+    public Ease EaseMethod { get; private set; } = Ease.Unset;
+
     Sequence _tweenSequence = default;
 
     public void TriggerTween(float duration) {
@@ -31,14 +34,14 @@ namespace GameJam {
         }
       } else {
         _tweenSequence = DOTween.Sequence()
-          .Append(this.gameObject.transform.DOBlendableLocalMoveBy(TranslateBy, duration))
-          .Join(this.gameObject.transform.DOBlendableLocalRotateBy(RotateBy, duration).SetEase(Ease.Linear))
-          .Join(this.gameObject.transform.DOBlendableScaleBy(ScaleBy, duration))
+          .Append(this.gameObject.transform.DOBlendableLocalMoveBy(TranslateBy, duration).SetEase(EaseMethod))
+          .Join(this.gameObject.transform.DOBlendableLocalRotateBy(RotateBy, duration).SetEase(EaseMethod))
+          .Join(this.gameObject.transform.DOBlendableScaleBy(ScaleBy, duration).SetEase(EaseMethod))
           .SetAutoKill(false)
           .SetUpdate(UpdateType.Fixed);
 
         if (IsContinuous) {
-          _tweenSequence.AppendCallback(this.RepeatTween);
+          _tweenSequence.AppendCallback(_tweenSequence.PlayAgain);
         }
       }
     }
@@ -51,8 +54,25 @@ namespace GameJam {
       _tweenSequence.Pause();
     }
 
-    private void RepeatTween() {
-      _tweenSequence.PlayAgain();
+    public void OnDrawGizmosSelected() {
+      Gizmos.color = new Color(0f, 0.75f, 0f, 0.25f);
+
+      MeshFilter[] childMeshes = this.gameObject.GetComponentsInChildren<MeshFilter>();
+      foreach (MeshFilter child in childMeshes) {
+        Vector3 newScale = ScaleBy + new Vector3(1, 1, 1);
+        Gizmos.DrawMesh(child.sharedMesh,
+          this.gameObject.transform.position
+          + Vector3.Scale(
+            child.transform.localPosition,
+            newScale)
+          + TranslateBy,
+          this.gameObject.transform.localRotation,
+          Vector3.Scale(
+            Vector3.Scale(
+              this.gameObject.transform.localScale,
+              child.transform.localScale),
+            newScale));
+      }
     }
   }
 }
