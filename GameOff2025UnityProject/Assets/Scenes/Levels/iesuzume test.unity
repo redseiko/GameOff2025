@@ -348,8 +348,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: GameJam::GameJam.TriggerableTweenable
   <TranslateBy>k__BackingField: {x: 0, y: 1, z: 0}
   <RotateBy>k__BackingField: {x: 0, y: 0, z: 0}
-  <ScaleBy>k__BackingField: {x: 0, y: 0, z: 0}
+  <ScaleBy>k__BackingField: {x: 0, y: 0, z: 4}
   <IsContinuous>k__BackingField: 0
+  <EaseMethod>k__BackingField: 0
 --- !u!1001 &980555076
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -621,6 +622,7 @@ MonoBehaviour:
   <RotateBy>k__BackingField: {x: 0, y: 0, z: 90}
   <ScaleBy>k__BackingField: {x: 0, y: 0, z: 0}
   <IsContinuous>k__BackingField: 1
+  <EaseMethod>k__BackingField: 1
 --- !u!114 &1780140280
 MonoBehaviour:
   m_ObjectHideFlags: 0

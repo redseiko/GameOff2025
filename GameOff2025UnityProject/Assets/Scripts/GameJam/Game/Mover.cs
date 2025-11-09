@@ -7,7 +7,7 @@ using UnityEngine;
 using YoloBox;
 
 namespace GameJam {
-  public class TriggerableTweenable : MonoBehaviour {
+  public class Mover : MonoBehaviour {
     [field: SerializeField]
     public Vector3 TranslateBy { get; private set; } = Vector3.zero;
 
