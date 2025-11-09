@@ -100,6 +100,7 @@ namespace GameJam {
 
       parentConstraint.SetTranslationOffset(_constraintIndex, PickupPositionOffset);
       parentConstraint.SetRotationOffset(_constraintIndex, PickupRotationOffset);
+      parentConstraint.rotationAxis = Axis.None;
       parentConstraint.weight = 0f;
       parentConstraint.constraintActive = true;
 
