@@ -346,6 +346,7 @@ GameObject:
   - component: {fileID: 8159659977434345499}
   - component: {fileID: 522583243006844268}
   - component: {fileID: 5974568166120929597}
+  - component: {fileID: 8926542892934797023}
   m_Layer: 0
   m_Name: YoloCoffeeTable
   m_TagString: Untagged
@@ -499,6 +500,22 @@ MonoBehaviour:
   <PopupTexts>k__BackingField:
   - A rectangular coffee table.
   <PopupDuration>k__BackingField: 4
+--- !u!114 &8926542892934797023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4279273382838388534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32bcf7de2c9b9694eb30b761b724a727, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.HandItem
+  <PickupPositionOffset>k__BackingField: {x: 0, y: 0, z: 1}
+  <PickupRotationOffset>k__BackingField: {x: 0, y: 0, z: 0}
+  <CanPickup>k__BackingField: 1
+  <IsPickedUp>k__BackingField: 0
 --- !u!1 &5205115763890878797
 GameObject:
   m_ObjectHideFlags: 0
