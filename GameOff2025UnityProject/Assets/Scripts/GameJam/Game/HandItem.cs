@@ -31,7 +31,6 @@ namespace GameJam {
     [field: SerializeField]
     public bool IsPickedUp { get; private set; } = false;
 
-    int _constraintIndex = -1;
     readonly List<HandItem> _childHandItems = new();
 
     public void Pickup(GameObject interactAgent) {
@@ -44,12 +43,12 @@ namespace GameJam {
       HandManager.Instance.FindChildHandItems(this, _childHandItems);
 
       foreach (HandItem childHandItem in _childHandItems) {
+        childHandItem.AddParentConstraint(gameObject, shouldSetOffsets: false, shouldTweenWeight: false);
         childHandItem.SetIsKinematic(true);
         childHandItem.ToggleColliders(toggleOn: false);
-        childHandItem.transform.parent = transform;
       }
 
-      AddParentConstraint(interactAgent);
+      AddParentConstraint(interactAgent, shouldSetOffsets: true, shouldTweenWeight: true);
       SetIsKinematic(true);
       ToggleColliders(toggleOn: false);
     }
@@ -64,9 +63,9 @@ namespace GameJam {
       ToggleColliders(toggleOn: true);
 
       foreach (HandItem childHandItem in _childHandItems) {
+        childHandItem.RemoveParentConstraint();
         childHandItem.SetIsKinematic(false);
         childHandItem.ToggleColliders(true);
-        childHandItem.transform.parent = default;
       }
 
       _childHandItems.Clear();
@@ -74,63 +73,66 @@ namespace GameJam {
       IsPickedUp = false;
     }
 
-    public void SetIsKinematic(bool isKinematic) {
+    void SetIsKinematic(bool isKinematic) {
       foreach (Rigidbody rigidbody in GetComponentsInChildren<Rigidbody>()) {
         rigidbody.isKinematic = isKinematic;
       }
     }
 
-    public void ToggleColliders(bool toggleOn) {
+    void ToggleColliders(bool toggleOn) {
       foreach (Collider collider in GetComponentsInChildren<Collider>()) {
         collider.enabled = toggleOn;
       }
     }
 
-    void AddParentConstraint(GameObject interactAgent) {
+    void AddParentConstraint(GameObject parent, bool shouldSetOffsets, bool shouldTweenWeight) {
       if (!gameObject.TryGetComponent(out ParentConstraint parentConstraint)) {
         parentConstraint = gameObject.AddComponent<ParentConstraint>();
       }
 
-      _constraintIndex =
+      int constraintIndex =
           parentConstraint.AddSource(
               new ConstraintSource() {
-                sourceTransform = interactAgent.transform,
+                sourceTransform = parent.transform,
                 weight = 1f,
               });
 
-      parentConstraint.SetTranslationOffset(_constraintIndex, PickupPositionOffset);
-      parentConstraint.SetRotationOffset(_constraintIndex, PickupRotationOffset);
-      parentConstraint.rotationAxis = Axis.None;
-      parentConstraint.weight = 0f;
-      parentConstraint.constraintActive = true;
+      if (shouldSetOffsets) {
+        parentConstraint.SetTranslationOffset(constraintIndex, PickupPositionOffset);
+        parentConstraint.SetRotationOffset(constraintIndex, PickupRotationOffset);
+        parentConstraint.rotationAxis = Axis.None;
+      } else {
+        // Copied from: https://discussions.unity.com/t/218717/4
+        Matrix4x4 inverse = Matrix4x4.TRS(parent.transform.position, parent.transform.rotation, Vector3.one).inverse;
+        parentConstraint.SetTranslationOffset(constraintIndex, inverse.MultiplyPoint3x4(transform.position));
+        parentConstraint.SetRotationOffset(
+            constraintIndex, (Quaternion.Inverse(parent.transform.rotation) * transform.rotation).eulerAngles);
+      }
 
-      DOVirtual
-          .Float(0f, 1f, 0.5f, value => parentConstraint.weight = value)
-          .SetEase(Ease.InQuad)
-          .SetTarget(parentConstraint)
-          .SetLink(parentConstraint.gameObject);
+      parentConstraint.weight = shouldTweenWeight ? 0f : 1f;
+      parentConstraint.constraintActive = true;
+      parentConstraint.locked = true;
+
+      if (shouldTweenWeight) {
+        DOVirtual
+            .Float(0f, 1f, 0.5f, value => parentConstraint.weight = value)
+            .SetEase(Ease.InQuad)
+            .SetTarget(parentConstraint)
+            .SetLink(parentConstraint.gameObject);
+      }
     }
 
     void RemoveParentConstraint() {
-      if (!gameObject.TryGetComponent(out ParentConstraint parentConstraint) || _constraintIndex < 0) {
+      if (!gameObject.TryGetComponent(out ParentConstraint parentConstraint)) {
         return;
       }
 
       DOTween.Complete(parentConstraint, withCallbacks: true);
 
-      parentConstraint.RemoveSource(_constraintIndex);
-      _constraintIndex = -1;
+      parentConstraint.weight = 0f;
+      parentConstraint.constraintActive = false;
 
-      if (parentConstraint.sourceCount <= 0) {
-        Destroy(parentConstraint);
-      }
-    }
-
-    void OnDrawGizmosSelected() {
-      if (Application.isPlaying) {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position + OverlapBoxCenter, OverlapBoxSize);
-      }  
+      Destroy(parentConstraint);
     }
   }
 }
