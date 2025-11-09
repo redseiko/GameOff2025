@@ -25,14 +25,14 @@ namespace GameJam {
 
     Sequence _openDoorSequence = default;
 
-    public void OpenDoor(GameObject interactAgent) {
+    public void OpenDoor(GameObject interactAgent = default) {
       if (_openDoorSequence.IsActive() && !_openDoorSequence.IsComplete()) {
         return;
       }
 
       ToggleDoorColliders(interactAgent, toggleOn: false);
 
-      Vector3 rotation = IsDoorOpen ? OpenDoorRotation * -1f : OpenDoorRotation;
+      Vector3 rotation = IsDoorOpen ? -OpenDoorRotation : OpenDoorRotation;
       bool isDoorOpen = !IsDoorOpen;
 
       _openDoorSequence = DOTween.Sequence()
@@ -42,16 +42,16 @@ namespace GameJam {
                 ToggleDoorColliders(interactAgent, toggleOn: true);
                 IsDoorOpen = isDoorOpen;
               })
-          .SetUpdate(UpdateType.Fixed);
+          .SetLink(DoorHinge.gameObject);
     }
 
     void ToggleDoorColliders(GameObject interactAgent, bool toggleOn) {
-      if (!interactAgent.TryGetComponent(out Collider agentCollider)) {
+      if (!interactAgent || !interactAgent.TryGetComponent(out Collider agentCollider)) {
         return;
       }
 
       foreach (Collider collider in DoorColliders) {
-        Physics.IgnoreCollision(collider, agentCollider, !toggleOn);
+        Physics.IgnoreCollision(collider, agentCollider, ignore: !toggleOn);
       }
     }
   }

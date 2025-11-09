@@ -120,6 +120,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6468864231516846738}
+  - component: {fileID: 6878533852588667123}
   m_Layer: 0
   m_Name: YoloDrawer
   m_TagString: Untagged
@@ -148,6 +149,29 @@ Transform:
   - {fileID: 7212358879967548322}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6878533852588667123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3502714145035908546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3a9fa1d6526dbd468174264ff1bc543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.YoloDrawer
+  <Drawer>k__BackingField: {fileID: 6468864231516846738}
+  <DrawerColliders>k__BackingField:
+  - {fileID: 771466143399309662}
+  - {fileID: 4722240883895820003}
+  - {fileID: 3835737005877400873}
+  - {fileID: 1496462288619481000}
+  - {fileID: 4337500480331390442}
+  - {fileID: 8556963204750679453}
+  <OpenDrawerTranslation>k__BackingField: {x: 0, y: 0, z: -0.3}
+  <OpenDrawerDuration>k__BackingField: 0.5
+  <IsDrawerOpen>k__BackingField: 0
 --- !u!1 &3832874892435594645
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,8 +646,8 @@ Transform:
   m_GameObject: {fileID: 8662020155373827661}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.225, z: -0.24}
-  m_LocalScale: {x: 0.1, y: 0.05, z: 0.024999999}
+  m_LocalPosition: {x: 0, y: 0.25, z: -0.24}
+  m_LocalScale: {x: 0.15, y: 0.05, z: 0.024999999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6468864231516846738}
@@ -726,7 +750,19 @@ MonoBehaviour:
   <CanHighlight>k__BackingField: 1
   <OnInteract>k__BackingField:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6878533852588667123}
+        m_TargetAssemblyTypeName: GameJam.YoloDrawer, GameJam
+        m_MethodName: OpenDrawer
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <OnHoldInteractStart>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
