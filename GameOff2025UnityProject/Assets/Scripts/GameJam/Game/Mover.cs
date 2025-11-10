@@ -71,8 +71,7 @@ namespace GameJam {
       foreach (MeshFilter child in childMeshes) {
         Vector3 newScale = ScaleBy + new Vector3(1, 1, 1);
         Gizmos.DrawMesh(child.sharedMesh,
-          this.gameObject.transform.position
-          + Vector3.Scale(
+          Vector3.Scale(
             child.transform.localPosition,
             newScale)
           + TranslateBy,
