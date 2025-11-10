@@ -2,6 +2,8 @@ using System;
 
 using Unity.Cinemachine;
 
+using UnityEditor.Experimental.GraphView;
+
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -20,6 +22,9 @@ namespace GameJam {
     [field: SerializeField]
     public bool ResetTriggerIntervalsWhileRewinding { get; private set; } = false;
 
+    [field: SerializeField]
+    public bool CompleteAtFullDuration { get; private set; } = true;
+
     [field: Header("Events")]
     [field: SerializeField]
     public UnityEvent<GameObject> OnHoldStart { get; private set; }
@@ -33,47 +38,77 @@ namespace GameJam {
     [field: SerializeField]
     public UnityEvent<GameObject> OnHoldComplete { get; private set; }
 
-    private bool _active = false;
+    private enum InternalState {
+      // Not playing and waiting for a trigger.
+      Waiting,
 
-    private bool _complete = false;
+      // Triggered and progressing forward.
+      Playing,
+
+      // Progressing backwards.
+      Rewinding,
+
+      // No longer listening to triggers.
+      Complete
+    }
+
+    private InternalState _state = InternalState.Waiting;
 
     private float _progress = 0.0f;
 
     private float _nextTriggerTime = 0.0f;
 
     public void StartHold() {
-      if (!_complete) {
-        _active = true;
-        OnHoldStart?.Invoke(this.gameObject);
+      if (_state == InternalState.Complete) {
+        return;
       }
+
+      _state = InternalState.Playing;
+      OnHoldStart?.Invoke(this.gameObject);
     }
 
     public void StopHold() {
-      _active = false;
-      if (!_complete) {
-        OnHoldInterrupted?.Invoke(this.gameObject);
+      if (_state == InternalState.Complete) {
+        return;
       }
+
+      if (RewindOnInterrupt) {
+        _state = InternalState.Rewinding;
+      } else {
+        _state = InternalState.Waiting;
+      }
+      OnHoldInterrupted?.Invoke(this.gameObject);
     }
 
     public void FixedUpdate() {
-      if (!_complete) {
-        if (_progress > HoldDuration) {
-          _complete = true;
-          _active = false;
-          OnHoldComplete?.Invoke(this.gameObject);
-        } else if (_active) {
+      switch (_state) {
+        case InternalState.Playing:
           if (_progress > _nextTriggerTime) {
             OnHolding?.Invoke(this.gameObject);
             _nextTriggerTime += OnHoldingTriggerInterval;
           }
           _progress += Time.fixedDeltaTime;
-        } else if (RewindOnInterrupt && _progress > 0) {
+          if (_progress > HoldDuration) {
+            OnHoldComplete?.Invoke(this.gameObject);
+            if (CompleteAtFullDuration) {
+              _state = InternalState.Complete;
+            } else {
+              _state = InternalState.Waiting;
+            }
+          }
+          break;
+        case InternalState.Rewinding:
           _progress -= Time.fixedDeltaTime;
           if (ResetTriggerIntervalsWhileRewinding &&
             (_nextTriggerTime - _progress) > OnHoldingTriggerInterval) {
             _nextTriggerTime -= OnHoldingTriggerInterval;
           }
-        }
+          if (_progress < 0) {
+            _state = InternalState.Waiting;
+          }
+          break;
+        default:
+          return;
       }
     }
   }
