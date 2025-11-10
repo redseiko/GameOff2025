@@ -43,7 +43,7 @@ namespace GameJam {
       Waiting,
 
       // Triggered and progressing forward.
-      Playing,
+      Progressing,
 
       // Progressing backwards.
       Rewinding,
@@ -63,7 +63,7 @@ namespace GameJam {
         return;
       }
 
-      _state = InternalState.Playing;
+      _state = InternalState.Progressing;
       OnHoldStart?.Invoke(this.gameObject);
     }
 
@@ -82,7 +82,7 @@ namespace GameJam {
 
     public void FixedUpdate() {
       switch (_state) {
-        case InternalState.Playing:
+        case InternalState.Progressing:
           if (_progress > _nextTriggerTime) {
             OnHolding?.Invoke(this.gameObject);
             _nextTriggerTime += OnHoldingTriggerInterval;
