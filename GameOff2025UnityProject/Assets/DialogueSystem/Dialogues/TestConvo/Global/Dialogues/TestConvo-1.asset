@@ -19,7 +19,7 @@ MonoBehaviour:
     <NextDialogue>k__BackingField: {fileID: 0}
   <DialogueType>k__BackingField: 1
   <IsStartingDialogue>k__BackingField: 0
-  <PortraitType>k__BackingField: 0
+  <DisplayType>k__BackingField: 1
   <Portrait>k__BackingField: {fileID: 0}
   <OnDialogStartEvents>k__BackingField: []
   references:

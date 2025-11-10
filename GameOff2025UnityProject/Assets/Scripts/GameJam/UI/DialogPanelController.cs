@@ -106,10 +106,10 @@ namespace GameJam {
       DialogDisplayController previousDialogDisplay = CurrentDialogDisplay;
       DialogDisplayController nextDialogDisplay = CurrentDialogDisplay;
 
-      if (dialogNode.PortraitType == DSPortraitType.NoPortrait) {
+      if (dialogNode.DisplayType == DSDisplayType.BookDisplay) {
         nextDialogDisplay = BookDisplay;
       } else {
-        Debug.LogError($"Unsupported DSPortraitType! {dialogNode.PortraitType}");
+        Debug.LogError($"Unsupported DSDisplayType! {dialogNode.DisplayType}");
       }
 
       if (previousDialogDisplay

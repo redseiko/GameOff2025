@@ -24,7 +24,7 @@ MonoBehaviour:
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 1
     <Position>k__BackingField: {x: 249, y: 265}
-    <PortraitType>k__BackingField: 0
+    <DisplayType>k__BackingField: 1
     <Portrait>k__BackingField: {fileID: 0}
   - <ID>k__BackingField: baf92860-8da0-45e7-aa4a-e81d9e7c56db
     <Name>k__BackingField: TestConvo-1
@@ -35,7 +35,7 @@ MonoBehaviour:
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 1
     <Position>k__BackingField: {x: 550, y: 265}
-    <PortraitType>k__BackingField: 0
+    <DisplayType>k__BackingField: 1
     <Portrait>k__BackingField: {fileID: 0}
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
