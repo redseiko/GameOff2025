@@ -31,7 +31,7 @@ namespace GameJam {
       if (_tweenSequence.IsActive()) {
         if (!Continuous && _tweenSequence.IsComplete()) {
           return;
-        } else if (!_tweenSequence.IsPlaying()) {
+        } else if (!_tweenSequence.IsPlaying() || _tweenSequence.IsBackwards()) {
           _tweenSequence.PlayForward();
         }
       } else {
@@ -43,7 +43,7 @@ namespace GameJam {
           .SetUpdate(UpdateType.Fixed);
 
         if (Continuous) {
-          _tweenSequence.AppendCallback(_tweenSequence.PlayAgain);
+          _tweenSequence.SetLoops(-1, LoopType.Incremental);
         }
       }
     }
@@ -54,6 +54,14 @@ namespace GameJam {
       }
 
       _tweenSequence.Pause();
+    }
+
+    public void RewindTween() {
+      if (!_tweenSequence.IsActive()) {
+        return;
+      }
+
+      _tweenSequence.PlayBackwards();
     }
 
     public void OnDrawGizmosSelected() {

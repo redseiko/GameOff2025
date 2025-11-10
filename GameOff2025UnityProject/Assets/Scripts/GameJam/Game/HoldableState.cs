@@ -1,16 +1,24 @@
 using System;
 
+using Unity.Cinemachine;
+
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace GameJam {
   public class HoldableState : MonoBehaviour {
-    [field: Header("Duration")]
+    [field: Header("Progression")]
     [field: SerializeField]
     public float HoldDuration { get; private set; } = 1.0f;
 
     [field: SerializeField]
     public float OnHoldingTriggerInterval { get; private set; } = 0.25f;
+
+    [field: SerializeField]
+    public bool RewindOnInterrupt { get; private set; } = false;
+
+    [field: SerializeField]
+    public bool ResetTriggerIntervalsWhileRewinding { get; private set; } = false;
 
     [field: Header("Events")]
     [field: SerializeField]
@@ -49,7 +57,7 @@ namespace GameJam {
 
     public void FixedUpdate() {
       if (!_complete) {
-        if (Mathf.Approximately(_progress, HoldDuration)) {
+        if (_progress > HoldDuration) {
           _complete = true;
           _active = false;
           OnHoldComplete?.Invoke(this.gameObject);
@@ -59,6 +67,12 @@ namespace GameJam {
             _nextTriggerTime += OnHoldingTriggerInterval;
           }
           _progress += Time.fixedDeltaTime;
+        } else if (RewindOnInterrupt && _progress > 0) {
+          _progress -= Time.fixedDeltaTime;
+          if (ResetTriggerIntervalsWhileRewinding &&
+            (_nextTriggerTime - _progress) > OnHoldingTriggerInterval) {
+            _nextTriggerTime -= OnHoldingTriggerInterval;
+          }
         }
       }
     }
