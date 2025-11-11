@@ -392,7 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3640aed4dbfbbec418bdd42299d733b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: GameJam::GameJam.YoloCargoColor
-  <TargetColor>k__BackingField: {r: 0.23137257, g: 0.63529414, b: 0.8745099, a: 1}
+  <TargetColor>k__BackingField: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 1}
   <TargetRenderers>k__BackingField:
   - {fileID: 8209692095124613629}
   - {fileID: 144134319061855125}
@@ -416,7 +416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3640aed4dbfbbec418bdd42299d733b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: GameJam::GameJam.YoloCustomColor
-  <TargetColor>k__BackingField: {r: 0.5788471, g: 0.7568568, b: 0.85882354, a: 1}
+  <TargetColor>k__BackingField: {r: 0.582, g: 0.582, b: 0.582, a: 1}
   <TargetRenderers>k__BackingField:
   - {fileID: 6215850156104541592}
   - {fileID: 1431768859024179758}
