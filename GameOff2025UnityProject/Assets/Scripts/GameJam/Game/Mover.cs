@@ -18,14 +18,41 @@ namespace GameJam {
     [field: SerializeField]
     public Vector3 ScaleBy { get; private set; } = Vector3.zero;
 
+    [field: SerializeField]
+    public float Duration { get; private set; } = 1f;
+
     [field: Header("Behaviour")]
     [field: SerializeField]
     public bool Continuous { get; private set; } = false;
 
     [field: SerializeField]
+    public bool AutoStart { get; private set; } = false;
+
+    [field: SerializeField]
     public Ease EaseMethod { get; private set; } = Ease.Unset;
 
+    public enum CompleteAction {
+      // Complete the movement and stop
+      End,
+
+      // Begin moving backwards and end once it returns to the beginning
+      Reverse,
+    }
+
+    [field: SerializeField]
+    public CompleteAction OnComplete { get; private set; } = CompleteAction.End;
+
     Sequence _tweenSequence = default;
+
+    public void Start() {
+      if (AutoStart) {
+        TriggerTween();
+      }
+    }
+
+    public void TriggerTween() {
+      TriggerTween(Duration);
+    }
 
     public void TriggerTween(float duration) {
       if (_tweenSequence.IsActive()) {
@@ -43,7 +70,8 @@ namespace GameJam {
           .SetUpdate(UpdateType.Fixed);
 
         if (Continuous) {
-          _tweenSequence.SetLoops(-1, LoopType.Incremental);
+          _tweenSequence.SetLoops(-1,
+            OnComplete == CompleteAction.Reverse ? LoopType.Yoyo : LoopType.Incremental);
         }
       }
     }
