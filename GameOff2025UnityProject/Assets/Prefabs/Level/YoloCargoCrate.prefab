@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7797301141804673851}
   - component: {fileID: 7744977534712348014}
   m_Layer: 0
-  m_Name: Door
+  m_Name: BackRightDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -342,6 +342,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3508192708372161000}
+  - component: {fileID: 3721969337097276918}
+  - component: {fileID: 8599999252582232210}
   m_Layer: 0
   m_Name: YoloCargoCrate
   m_TagString: Untagged
@@ -378,6 +380,48 @@ Transform:
   - {fileID: 7568725675123559874}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3721969337097276918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923179381037118320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3640aed4dbfbbec418bdd42299d733b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.YoloCargoColor
+  <TargetColor>k__BackingField: {r: 0.23137257, g: 0.63529414, b: 0.8745099, a: 1}
+  <TargetRenderers>k__BackingField:
+  - {fileID: 8209692095124613629}
+  - {fileID: 144134319061855125}
+  - {fileID: 3629976088058185216}
+  - {fileID: 276077522436202137}
+  - {fileID: 5448693958153279755}
+  - {fileID: 3779003941625454296}
+  - {fileID: 470960033967013966}
+  - {fileID: 3132963922158768336}
+  - {fileID: 6223951543094226035}
+  - {fileID: 7611274172492038952}
+--- !u!114 &8599999252582232210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923179381037118320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3640aed4dbfbbec418bdd42299d733b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.YoloCustomColor
+  <TargetColor>k__BackingField: {r: 0.5788471, g: 0.7568568, b: 0.85882354, a: 1}
+  <TargetRenderers>k__BackingField:
+  - {fileID: 6215850156104541592}
+  - {fileID: 1431768859024179758}
+  - {fileID: 6164686460075106206}
+  - {fileID: 7797301141804673851}
 --- !u!1 &2012533786636640107
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,7 +689,7 @@ GameObject:
   - component: {fileID: 6215850156104541592}
   - component: {fileID: 4142967894213741101}
   m_Layer: 0
-  m_Name: Door
+  m_Name: FrontLeftDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -788,7 +832,7 @@ GameObject:
   - component: {fileID: 6164686460075106206}
   - component: {fileID: 9219840028915046411}
   m_Layer: 0
-  m_Name: Door
+  m_Name: BackLeftDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1010,7 +1054,7 @@ GameObject:
   - component: {fileID: 1431768859024179758}
   - component: {fileID: 6577425113076277602}
   m_Layer: 0
-  m_Name: Door
+  m_Name: FrontRightDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
