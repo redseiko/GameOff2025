@@ -449,7 +449,7 @@ MonoBehaviour:
   - {fileID: 6327275236592015288}
   - {fileID: 6430492442702194402}
   - {fileID: 6556451854549943649}
-  <OpenDoorRotation>k__BackingField: {x: 0, y: -90, z: 0}
+  <OpenDoorRotation>k__BackingField: {x: 0, y: 90, z: 0}
   <OpenDoorDuration>k__BackingField: 0.5
   <IsDoorOpen>k__BackingField: 0
 --- !u!114 &1745484642095458734
