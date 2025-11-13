@@ -233,6 +233,7 @@ GameObject:
   - component: {fileID: 3508192708372161000}
   - component: {fileID: 3721969337097276918}
   - component: {fileID: 8599999252582232210}
+  - component: {fileID: 3094180875889131453}
   m_Layer: 0
   m_Name: YoloCargoCrate
   m_TagString: Untagged
@@ -311,6 +312,33 @@ MonoBehaviour:
   - {fileID: 5388223277430862153}
   - {fileID: 3056080945385365956}
   - {fileID: 7797301141804673851}
+--- !u!54 &3094180875889131453
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923179381037118320}
+  serializedVersion: 5
+  m_Mass: 3000
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2012533786636640107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,6 +1235,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3508192708372161000}
     m_Modifications:
+    - target: {fileID: 1350141280412736217, guid: 1003f59fa0aa0e84397349b9a8befa6f, type: 3}
+      propertyPath: m_ConnectedBody
+      value: 
+      objectReference: {fileID: 3094180875889131453}
     - target: {fileID: 6667891149787956531, guid: 1003f59fa0aa0e84397349b9a8befa6f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.92
@@ -1274,6 +1306,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3508192708372161000}
     m_Modifications:
+    - target: {fileID: 1350141280412736217, guid: 1003f59fa0aa0e84397349b9a8befa6f, type: 3}
+      propertyPath: m_ConnectedBody
+      value: 
+      objectReference: {fileID: 3094180875889131453}
     - target: {fileID: 6667891149787956531, guid: 1003f59fa0aa0e84397349b9a8befa6f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.92
@@ -1341,6 +1377,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3508192708372161000}
     m_Modifications:
+    - target: {fileID: 1350141280412736217, guid: 1003f59fa0aa0e84397349b9a8befa6f, type: 3}
+      propertyPath: m_ConnectedBody
+      value: 
+      objectReference: {fileID: 3094180875889131453}
     - target: {fileID: 6667891149787956531, guid: 1003f59fa0aa0e84397349b9a8befa6f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.92
@@ -1408,6 +1448,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3508192708372161000}
     m_Modifications:
+    - target: {fileID: 1350141280412736217, guid: 1003f59fa0aa0e84397349b9a8befa6f, type: 3}
+      propertyPath: m_ConnectedBody
+      value: 
+      objectReference: {fileID: 3094180875889131453}
     - target: {fileID: 6667891149787956531, guid: 1003f59fa0aa0e84397349b9a8befa6f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.92

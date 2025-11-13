@@ -728,6 +728,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6568414682142948119, guid: 2e37c29fef70ef743856d5ff27fe925d, type: 3}
+      propertyPath: <CapsuleCanPush>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6568414682142948119, guid: 2e37c29fef70ef743856d5ff27fe925d, type: 3}
       propertyPath: <ShouldDetectCollisions>k__BackingField
       value: 1
       objectReference: {fileID: 0}
