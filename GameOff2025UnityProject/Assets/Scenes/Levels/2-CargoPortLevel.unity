@@ -220,7 +220,8 @@ PrefabInstance:
       value: -9.667
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3087932167671782274, guid: cd6c16a5f09bbea44955b83e48150aa9, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd6c16a5f09bbea44955b83e48150aa9, type: 3}
@@ -329,6 +330,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5728549176140292091, guid: 2d39fa54282515a4ab72ed731a90f4f6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1123e3fc7cec8584c9439481eb0bc589, type: 2}
     - target: {fileID: 5882925257059894325, guid: 2d39fa54282515a4ab72ed731a90f4f6, type: 3}
       propertyPath: m_Name
       value: YoloFloor
