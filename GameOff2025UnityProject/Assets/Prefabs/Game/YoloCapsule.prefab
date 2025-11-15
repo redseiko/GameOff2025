@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: GameJam::GameJam.YoloCapsuleController
   <CharacterController>k__BackingField: {fileID: 7566034588987168546}
-  <ShouldDetectCollisions>k__BackingField: 0
+  <ShouldDetectCollisions>k__BackingField: 1
   <CapsuleCanPush>k__BackingField: 0
   <CapsulePushMass>k__BackingField: 60
   <CapsulePushForce>k__BackingField: 0.1
