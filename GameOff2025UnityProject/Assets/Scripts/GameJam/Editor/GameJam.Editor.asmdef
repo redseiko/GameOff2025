@@ -2,7 +2,8 @@
     "name": "GameJam.Editor",
     "rootNamespace": "GameJam.Editor",
     "references": [
-        "GameJam"
+        "GameJam",
+        "Unity.MaterialPropertyProvider"
     ],
     "includePlatforms": [
         "Editor"
