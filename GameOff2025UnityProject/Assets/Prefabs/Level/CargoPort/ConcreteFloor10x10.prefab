@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9010199085727601205}
   - component: {fileID: 4433093040105039356}
   m_Layer: 0
-  m_Name: ConcreteFloor10x1x10
+  m_Name: ConcreteFloor10x10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
