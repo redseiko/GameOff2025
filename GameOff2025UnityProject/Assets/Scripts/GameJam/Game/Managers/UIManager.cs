@@ -16,6 +16,9 @@ namespace GameJam {
     public DialogPanelController DialogPanel { get; private set; }
 
     [field: SerializeField]
+    public FPSPanelController FPSPanel { get; private set; }
+
+    [field: SerializeField]
     public InteractPanelController InteractPanel { get; private set; }
 
     [field: SerializeField]
