@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5818255419542962588
+--- !u!1001 &6908024905550201812
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 797158050745098181, guid: d32bd88a7ca0de04293d3852e1120b9a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 25
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 797158050745098181, guid: d32bd88a7ca0de04293d3852e1120b9a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 797158050745098181, guid: d32bd88a7ca0de04293d3852e1120b9a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 25.5
+      value: 25.55
       objectReference: {fileID: 0}
     - target: {fileID: 797158050745098181, guid: d32bd88a7ca0de04293d3852e1120b9a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6760367289909465144, guid: d32bd88a7ca0de04293d3852e1120b9a, type: 3}
       propertyPath: m_Name
-      value: AsphaltRoad4x4 Variant
+      value: AsphaltRoad16x4 Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
