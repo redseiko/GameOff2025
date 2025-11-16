@@ -8,7 +8,7 @@ namespace GameJam {
   [ExecuteAlways]
   public sealed class YoloCustomColor : MaterialPropertyProviderBase {
     [field: SerializeField]
-    [field: MaterialProperty("_Color")]
+    [field: MaterialProperty("_BaseColor")]
     public Color TargetColor { get; set; } = new Color(0.275f, 0.275f, 0.275f);
 
     [field: SerializeField]
