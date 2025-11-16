@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1297284136786406075
+--- !u!1001 &7735351154063127059
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,13 +8,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1437971667969043987, guid: 822d6ac8846f01f4abf875aad750faad, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1923179381037118320, guid: 822d6ac8846f01f4abf875aad750faad, type: 3}
       propertyPath: m_Name
-      value: CargoCrateBlue
+      value: CargoCrateBrown
       objectReference: {fileID: 0}
     - target: {fileID: 3508192708372161000, guid: 822d6ac8846f01f4abf875aad750faad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 3508192708372161000, guid: 822d6ac8846f01f4abf875aad750faad, type: 3}
       propertyPath: m_LocalPosition.y
@@ -54,35 +58,59 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3721969337097276918, guid: 822d6ac8846f01f4abf875aad750faad, type: 3}
       propertyPath: <TargetColor>k__BackingField.b
-      value: 0.5254902
+      value: 0.27450982
       objectReference: {fileID: 0}
     - target: {fileID: 3721969337097276918, guid: 822d6ac8846f01f4abf875aad750faad, type: 3}
       propertyPath: <TargetColor>k__BackingField.g
-      value: 0.26666668
+      value: 0.2784314
       objectReference: {fileID: 0}
     - target: {fileID: 3721969337097276918, guid: 822d6ac8846f01f4abf875aad750faad, type: 3}
       propertyPath: <TargetColor>k__BackingField.r
-      value: 0.03137255
+      value: 0.3803922
       objectReference: {fileID: 0}
     - target: {fileID: 3918562643187839457, guid: 822d6ac8846f01f4abf875aad750faad, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: bc848e9697ae89e40bf46adedb500a04, type: 2}
+      objectReference: {fileID: 2100000, guid: 265bee8e9a140384380fdb664516aa8a, type: 2}
+    - target: {fileID: 4959044214320098694, guid: 822d6ac8846f01f4abf875aad750faad, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4959044214320098694, guid: 822d6ac8846f01f4abf875aad750faad, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.25
+      objectReference: {fileID: 0}
     - target: {fileID: 6034492003933293515, guid: 822d6ac8846f01f4abf875aad750faad, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: bc848e9697ae89e40bf46adedb500a04, type: 2}
+      objectReference: {fileID: 2100000, guid: 265bee8e9a140384380fdb664516aa8a, type: 2}
+    - target: {fileID: 6172261230298129644, guid: 822d6ac8846f01f4abf875aad750faad, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927845629903378692, guid: 822d6ac8846f01f4abf875aad750faad, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927845629903378692, guid: 822d6ac8846f01f4abf875aad750faad, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7646548152689722679, guid: 822d6ac8846f01f4abf875aad750faad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8599999252582232210, guid: 822d6ac8846f01f4abf875aad750faad, type: 3}
       propertyPath: <TargetColor>k__BackingField.b
-      value: 0.5254902
+      value: 0.4503093
       objectReference: {fileID: 0}
     - target: {fileID: 8599999252582232210, guid: 822d6ac8846f01f4abf875aad750faad, type: 3}
       propertyPath: <TargetColor>k__BackingField.g
-      value: 0.38800815
+      value: 0.4567423
       objectReference: {fileID: 0}
     - target: {fileID: 8599999252582232210, guid: 822d6ac8846f01f4abf875aad750faad, type: 3}
       propertyPath: <TargetColor>k__BackingField.r
-      value: 0.26484707
+      value: 0.624
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
