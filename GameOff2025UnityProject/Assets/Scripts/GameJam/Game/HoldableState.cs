@@ -1,9 +1,3 @@
-using System;
-
-using Unity.Cinemachine;
-
-using UnityEditor.Experimental.GraphView;
-
 using UnityEngine;
 using UnityEngine.Events;
 

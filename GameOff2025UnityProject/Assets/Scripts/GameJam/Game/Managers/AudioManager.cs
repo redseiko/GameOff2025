@@ -1,5 +1,3 @@
-using UnityEngine;
-
 using YoloBox;
 
 namespace GameJam {
