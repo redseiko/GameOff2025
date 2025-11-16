@@ -44,3 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35d4c0c1e56c40d41936a6e64d91d1c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: GameJam::GameJam.GameManager
+  <StartingGameLevels>k__BackingField:
+  - asset: {fileID: 102900000, guid: 49bcfaab8e1328440ae00c9d627a5ce7, type: 3}
+    guid: 49bcfaab8e1328440ae00c9d627a5ce7
+  <IsGamePaused>k__BackingField: 0

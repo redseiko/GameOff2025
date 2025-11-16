@@ -539,6 +539,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5134415340202194520, guid: 58e6866e0dc4c134ea565fbea05f201e, type: 3}
+      propertyPath: <PlayerStateMachine>k__BackingField
+      value: 
+      objectReference: {fileID: 3583743971711482272}
+    - target: {fileID: 5134415340202194520, guid: 58e6866e0dc4c134ea565fbea05f201e, type: 3}
+      propertyPath: <PlayerCapsuleController>k__BackingField
+      value: 
+      objectReference: {fileID: 3583743971711482271}
+    - target: {fileID: 5134415340202194520, guid: 58e6866e0dc4c134ea565fbea05f201e, type: 3}
+      propertyPath: <PlayerCharacterController>k__BackingField
+      value: 
+      objectReference: {fileID: 3583743971711482273}
     - target: {fileID: 5592920036796063804, guid: 58e6866e0dc4c134ea565fbea05f201e, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -783,6 +795,33 @@ PrefabInstance:
 --- !u!1 &3583743971711482270 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7288649035009495243, guid: 2e37c29fef70ef743856d5ff27fe925d, type: 3}
+  m_PrefabInstance: {fileID: 3583743971711482269}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3583743971711482271 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6568414682142948119, guid: 2e37c29fef70ef743856d5ff27fe925d, type: 3}
+  m_PrefabInstance: {fileID: 3583743971711482269}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3583743971711482270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4dc25192461c3b449c2ca4bed2ffdb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.YoloCapsuleController
+--- !u!114 &3583743971711482272 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9215706087068146243, guid: 2e37c29fef70ef743856d5ff27fe925d, type: 3}
+  m_PrefabInstance: {fileID: 3583743971711482269}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3583743971711482270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a890582c1cf71140a67298fb4f274bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GameJam::GameJam.PlayerStateMachine
+--- !u!143 &3583743971711482273 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 7566034588987168546, guid: 2e37c29fef70ef743856d5ff27fe925d, type: 3}
   m_PrefabInstance: {fileID: 3583743971711482269}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7077153120084906131
