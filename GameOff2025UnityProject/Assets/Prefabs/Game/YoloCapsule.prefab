@@ -155,7 +155,7 @@ MonoBehaviour:
     m_Reference: {fileID: -2099379676528639254, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   <Velocity>k__BackingField: {x: 0, y: 0, z: 0}
   <MovementSpeed>k__BackingField: 5
-  <JumpForce>k__BackingField: 5
+  <JumpForce>k__BackingField: 7.5
   <LookRotationDampFactor>k__BackingField: 10
   <GravityMultiplier>k__BackingField: 2
   <MainCamera>k__BackingField: {fileID: 0}
