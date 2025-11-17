@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Animations;
 
 namespace GameJam {
   public sealed class FlatbedTruck : MonoBehaviour {
@@ -24,6 +25,40 @@ namespace GameJam {
 
     public void ToggleTruck(GameObject interactAgent = default) {
       CanMoveForward = !CanMoveForward;
+
+      if (interactAgent) {
+        ToggleParentConstraint(interactAgent);
+      }
+    }
+
+    void ToggleParentConstraint(GameObject interactAgent) {
+      if (CanMoveForward) {
+        if (!interactAgent.TryGetComponent(out ParentConstraint parentConstraint)) {
+          parentConstraint = interactAgent.AddComponent<ParentConstraint>();
+        }
+
+        int constraintIndex =
+            parentConstraint.AddSource(
+                new ConstraintSource() {
+                  sourceTransform = TruckRigidbody.transform,
+                  weight = 1f,
+                });
+
+        Matrix4x4 inverse =
+            Matrix4x4.TRS(TruckRigidbody.transform.position, TruckRigidbody.transform.rotation, Vector3.one).inverse;
+        parentConstraint.SetTranslationOffset(
+            constraintIndex, inverse.MultiplyPoint3x4(interactAgent.transform.position));
+        parentConstraint.SetRotationOffset(
+            constraintIndex, (Quaternion.Inverse(TruckRigidbody.transform.rotation) * transform.rotation).eulerAngles);
+
+        parentConstraint.weight = 1f;
+        parentConstraint.constraintActive = true;
+        parentConstraint.locked = true;
+      } else {
+        if (interactAgent.TryGetComponent(out ParentConstraint parentConstraint)) {
+          Destroy(parentConstraint);
+        }
+      }
     }
 
     void FixedUpdate() {
