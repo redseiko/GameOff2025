@@ -23,16 +23,25 @@ namespace GameJam {
     [field: SerializeField]
     public float CurrentVelocity { get; private set; }
 
+    [field: SerializeField]
+    public GameObject CurrentAttachedChild { get; private set; }
+
     public void ToggleTruck(GameObject interactAgent = default) {
       CanMoveForward = !CanMoveForward;
 
       if (interactAgent) {
-        ToggleParentConstraint(interactAgent);
+        if (CanMoveForward && !CurrentAttachedChild) {
+          ToggleParentConstraint(interactAgent);
+        } else if (!CanMoveForward && CurrentAttachedChild) {
+          ToggleParentConstraint(interactAgent);
+        }
       }
     }
 
-    void ToggleParentConstraint(GameObject interactAgent) {
-      if (CanMoveForward) {
+    public void ToggleParentConstraint(GameObject interactAgent) {
+      if (!CurrentAttachedChild) {
+        CurrentAttachedChild = interactAgent;
+
         if (!interactAgent.TryGetComponent(out ParentConstraint parentConstraint)) {
           parentConstraint = interactAgent.AddComponent<ParentConstraint>();
         }
@@ -55,9 +64,11 @@ namespace GameJam {
         parentConstraint.constraintActive = true;
         parentConstraint.locked = true;
       } else {
-        if (interactAgent.TryGetComponent(out ParentConstraint parentConstraint)) {
+        if (CurrentAttachedChild.TryGetComponent(out ParentConstraint parentConstraint)) {
           Destroy(parentConstraint);
         }
+
+        CurrentAttachedChild = default;
       }
     }
 
