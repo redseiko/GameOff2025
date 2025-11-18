@@ -11,7 +11,6 @@ namespace GameJam {
     public override void Enter() {
       Vector3 velocity = _stateMachine.Velocity;
       velocity.y = Physics.gravity.y;
-
       _stateMachine.Velocity = velocity;
 
       _stateMachine.JumpAction.action.performed += SwitchToJumpState;

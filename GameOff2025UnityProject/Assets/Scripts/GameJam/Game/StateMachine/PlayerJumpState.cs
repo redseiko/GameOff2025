@@ -20,6 +20,7 @@ namespace GameJam {
         _stateMachine.SwitchState(new PlayerFallState(_stateMachine));
       }
 
+      CalculateMoveDirection();
       FaceMoveDirection();
       Move();
     }
