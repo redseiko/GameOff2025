@@ -1,5 +1,8 @@
+using System;
+
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.InputSystem;
 
 namespace GameJam {
   public sealed class FlatbedTruck : MonoBehaviour {
@@ -7,21 +10,34 @@ namespace GameJam {
     [field: SerializeField]
     public Rigidbody TruckRigidbody { get; private set; }
 
+    [field: Header("Vehicle")]
     [field: SerializeField]
-    public float MotorForce { get; set; } = 10f;
+    public WheelControl[] Wheels { get; private set; } = Array.Empty<WheelControl>();
 
     [field: SerializeField]
-    public float SteerForce { get; set; } = 50f;
+    public float MotorTorque { get; set; } = 2000f;
 
     [field: SerializeField]
-    public float MaxVelocity { get; set; } = 10f;
+    public float BrakeTorque { get; set; } = 2000f;
+
+    [field: SerializeField]
+    public float MaxSpeed { get; set; } = 20f;
+
+    [field: SerializeField]
+    public float SteeringRange { get; set; } = 30f;
+
+    [field: SerializeField]
+    public float SteeringRangeAtMaxSpeed { get; set; } = 10f;
+
+    [field: SerializeField]
+    public InputActionProperty CarMovementInput { get; private set; }
 
     [field: Header("State")]
     [field: SerializeField]
     public bool CanMoveForward { get; private set; } = false;
 
     [field: SerializeField]
-    public float CurrentVelocity { get; private set; }
+    public Vector2 InputVector { get; private set; }
 
     [field: SerializeField]
     public GameObject CurrentAttachedChild { get; private set; }
@@ -73,10 +89,39 @@ namespace GameJam {
     }
 
     void FixedUpdate() {
-      CurrentVelocity = TruckRigidbody.linearVelocity.magnitude;
+      if (!CanMoveForward) {
+        return;
+      }
 
-      if (CanMoveForward && CurrentVelocity < MaxVelocity) {
-        TruckRigidbody.AddRelativeForce(Vector3.forward * MotorForce, ForceMode.Acceleration);
+      Vector2 inputVector = CarMovementInput.action.ReadValue<Vector2>();
+      InputVector = inputVector;
+
+      float vInput = inputVector.y;
+      float hInput = inputVector.x;
+
+      float forwardSpeed = Vector3.Dot(transform.forward, TruckRigidbody.linearVelocity);
+      float speedFactor = Mathf.InverseLerp(0f, MaxSpeed, Mathf.Abs(forwardSpeed));
+
+      float currentMotorTorque = Mathf.Lerp(MotorTorque, 0, speedFactor);
+      float currentSteerRange = Mathf.Lerp(SteeringRange, SteeringRangeAtMaxSpeed, speedFactor);
+
+      bool isAccelerating = Mathf.Sign(vInput) == Mathf.Sign(forwardSpeed);
+
+      foreach (WheelControl wheel in Wheels) {
+        if (wheel.IsSteerable) {
+          wheel.WheelCollider.steerAngle = hInput * currentSteerRange;
+        }
+
+        if (isAccelerating) {
+          if (wheel.IsMotorized) {
+            wheel.WheelCollider.motorTorque = vInput * currentMotorTorque;
+          }
+
+          wheel.WheelCollider.brakeTorque = 0f;
+        } else {
+          wheel.WheelCollider.motorTorque = 0f;
+          wheel.WheelCollider.brakeTorque = Mathf.Abs(vInput) * BrakeTorque;
+        }
       }
     }
   }
