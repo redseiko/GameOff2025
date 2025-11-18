@@ -39,11 +39,11 @@ namespace GameJam {
       }
 
       Vector3 pushDirection = new Vector3(hit.moveDirection.x, 0f, hit.moveDirection.z).normalized;
-
       float massRatio = CapsulePushMass / rigidbody.mass;
-      massRatio = Mathf.Clamp(massRatio, 0.1f, 10f);
 
-      rigidbody.AddForce(CapsulePushForce * massRatio * pushDirection, ForceMode.Impulse);
+      if (massRatio >= 0.1f) {
+        rigidbody.AddForce(CapsulePushForce * massRatio * pushDirection, ForceMode.Impulse);
+      }
     }
   }
 }
