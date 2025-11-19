@@ -12,9 +12,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConcreteFloor50x50
       objectReference: {fileID: 0}
+    - target: {fileID: 1625818811858434557, guid: 44c0654b720ea854fbb88adfe5e34bcd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8161429749394626961, guid: 44c0654b720ea854fbb88adfe5e34bcd, type: 3}
       propertyPath: m_LocalScale.x
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161429749394626961, guid: 44c0654b720ea854fbb88adfe5e34bcd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8161429749394626961, guid: 44c0654b720ea854fbb88adfe5e34bcd, type: 3}
       propertyPath: m_LocalScale.z
