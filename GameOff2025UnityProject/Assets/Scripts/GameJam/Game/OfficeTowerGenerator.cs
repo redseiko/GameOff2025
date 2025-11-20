@@ -1,10 +1,14 @@
 using UnityEngine;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
 namespace GameJam {
   public sealed class OfficeTowerGenerator : MonoBehaviour {
+    [Header("Identity & Generation")]
+    public string towerName = "PortTowerA"; // Defines folder and file naming
+
     [Header("Tower Dimensions")]
     public int numberOfFloors = 5;
     public float floorHeight = 4.0f;
@@ -32,8 +36,6 @@ namespace GameJam {
 
     private Material matConcrete, matFacade, matGlass, matFloor, matInterior, matMetal;
 
-    void Start() { } // Empty to prevent runtime execution
-
     [ContextMenu("Build Tower")]
     public void BuildTower() {
       Cleanup();
@@ -42,17 +44,19 @@ namespace GameJam {
       float totalCoreLen = elevLength + coreGap + stairLength;
       float coreGroupZ = 0;
 
-      // Calculate Centers relative to Core Group Center
+      // Calculate Centers
       float elevCenterZ = coreGroupZ - (totalCoreLen / 2) + (elevLength / 2);
       Vector3 elevPos = new Vector3((width / 2) - (coreWidth / 2), 0, elevCenterZ);
 
       float stairCenterZ = coreGroupZ + (totalCoreLen / 2) - (stairLength / 2);
       Vector3 stairPos = new Vector3((width / 2) - (coreWidth / 2), 0, stairCenterZ);
 
+      // Floors
       for (int i = 0; i < numberOfFloors; i++) {
         BuildFloor(i, elevPos, stairPos, totalCoreLen);
       }
 
+      // Roof
       BuildRoof(numberOfFloors, elevPos, stairPos, totalCoreLen);
     }
 
@@ -67,7 +71,7 @@ namespace GameJam {
 
     private void BuildFloor(int floorIndex, Vector3 elevPos, Vector3 stairPos, float totalCoreLen) {
       float currentY = floorIndex * floorHeight;
-      GameObject floorRoot = new GameObject($"Floor_{floorIndex}");
+      GameObject floorRoot = new GameObject($"Floor{floorIndex}");
       floorRoot.transform.parent = this.transform;
       floorRoot.transform.localPosition = new Vector3(0, currentY, 0);
 
@@ -87,32 +91,32 @@ namespace GameJam {
       float slabThick = 0.2f;
       float mainWidth = width - coreWidth;
 
-      // Main Slab
-      CreatePrimitive(parent, "Slab_Main",
+      // 1. Main Office Slab
+      CreatePrimitive(parent, "SlabMain",
           new Vector3(mainWidth, slabThick, length),
           new Vector3(-coreWidth / 2, 0, 0), matFloor);
 
-      // Front Strip (Elevator side)
+      // 2. Front Strip
       float coreStartZ = -(totalCoreLen / 2);
       float frontStripLen = (length / 2) + coreStartZ;
       if (frontStripLen > 0) {
-        CreatePrimitive(parent, "Slab_Front",
+        CreatePrimitive(parent, "SlabFront",
             new Vector3(coreWidth, slabThick, frontStripLen),
             new Vector3((width / 2) - (coreWidth / 2), 0, -length / 2 + frontStripLen / 2), matFloor);
       }
 
-      // Back Strip (Stair side)
+      // 3. Back Strip
       float coreEndZ = (totalCoreLen / 2);
       float backStripLen = (length / 2) - coreEndZ;
       if (backStripLen > 0) {
-        CreatePrimitive(parent, "Slab_Back",
+        CreatePrimitive(parent, "SlabBack",
             new Vector3(coreWidth, slabThick, backStripLen),
             new Vector3((width / 2) - (coreWidth / 2), 0, length / 2 - backStripLen / 2), matFloor);
       }
 
-      // Buffer Gap Floor
+      // 4. Buffer Gap Floor
       float gapCenterZ = -(totalCoreLen / 2) + elevLength + (coreGap / 2);
-      CreatePrimitive(parent, "Slab_Buffer",
+      CreatePrimitive(parent, "SlabBuffer",
           new Vector3(coreWidth, slabThick, coreGap),
           new Vector3((width / 2) - (coreWidth / 2), 0, gapCenterZ), matFloor);
     }
@@ -140,14 +144,12 @@ namespace GameJam {
       float w = coreWidth;
       float l = elevLength;
 
-      // Standard Walls (Centered vertically by h/2 inside CreatePrimitive)
-      CreatePrimitive(elev, "W_Ext", new Vector3(t, h, l), new Vector3(w / 2 - t / 2, h / 2, 0), matConcrete);
-      CreatePrimitive(elev, "W_Back", new Vector3(w, h, t), new Vector3(0, h / 2, l / 2 - t / 2), matConcrete);
-      CreatePrimitive(elev, "W_Front", new Vector3(w, h, t), new Vector3(0, h / 2, -l / 2 + t / 2), matConcrete);
+      CreatePrimitive(elev, "WallExterior", new Vector3(t, h, l), new Vector3(w / 2 - t / 2, h / 2, 0), matConcrete);
+      CreatePrimitive(elev, "WallBack", new Vector3(w, h, t), new Vector3(0, h / 2, l / 2 - t / 2), matConcrete);
+      CreatePrimitive(elev, "WallFront", new Vector3(w, h, t), new Vector3(0, h / 2, -l / 2 + t / 2), matConcrete);
 
-      // *** FIX: Pass Y=0 for WallWithDoor container ***
-      // The internal logic of CreateWallWithDoor handles the h/2 lift for the wall segments.
-      CreateWallWithDoor(elev, "W_Int",
+      // Door on Interior Wall (Pass Y=0 to container)
+      CreateWallWithDoor(elev, "WallInterior",
           new Vector3(t, h, l),
           new Vector3(-w / 2 + t / 2, 0, 0),
           1.6f, matConcrete);
@@ -163,20 +165,20 @@ namespace GameJam {
       float w = coreWidth;
       float l = stairLength;
 
-      CreatePrimitive(stairs, "W_Ext", new Vector3(t, h, l), new Vector3(w / 2 - t / 2, h / 2, 0), matConcrete);
-      CreatePrimitive(stairs, "W_Back", new Vector3(w, h, t), new Vector3(0, h / 2, l / 2 - t / 2), matConcrete);
-      CreatePrimitive(stairs, "W_Front", new Vector3(w, h, t), new Vector3(0, h / 2, -l / 2 + t / 2), matConcrete);
+      // Outer Walls
+      CreatePrimitive(stairs, "WallExterior", new Vector3(t, h, l), new Vector3(w / 2 - t / 2, h / 2, 0), matConcrete);
+      CreatePrimitive(stairs, "WallBack", new Vector3(w, h, t), new Vector3(0, h / 2, l / 2 - t / 2), matConcrete);
+      CreatePrimitive(stairs, "WallFront", new Vector3(w, h, t), new Vector3(0, h / 2, -l / 2 + t / 2), matConcrete);
 
-      // *** FIX: Pass Y=0 here as well ***
+      // Inner Wall with Door
       float doorOffset = -(l / 2) + 2.0f;
-      CreateWallWithDoorOffset(stairs, "W_Int",
+      CreateWallWithDoorOffset(stairs, "WallInterior",
           new Vector3(t, h, l),
           new Vector3(-w / 2 + t / 2, 0, 0),
           1.2f, doorOffset, matConcrete);
     }
 
     private void BuildStairRamps(GameObject parent, Vector3 pos) {
-      // 3-Zone Ramp System
       float wallT = coreWallThickness;
       float innerW = coreWidth - (wallT * 2);
       float innerL = stairLength - (wallT * 2);
@@ -193,41 +195,41 @@ namespace GameJam {
       float halfH = floorHeight / 2;
 
       // Bottom Landing
-      CreatePrimitive(ramps, "Landing_Bot",
+      CreatePrimitive(ramps, "LandingBottom",
           new Vector3(innerW / 2, 0.2f, landingDepth),
           new Vector3(-innerW / 4, 0.1f, zFrontLanding), matFloor);
 
       // Ramp Up 1
-      GameObject r1 = CreatePrimitive(ramps, "Ramp_Up_1",
+      GameObject r1 = CreatePrimitive(ramps, "RampUp1",
           new Vector3(innerW / 2 - 0.1f, 0.2f, rampRunLen),
           new Vector3(-innerW / 4, halfH / 2, zRampCenter), matFloor);
       float angle = Mathf.Atan(halfH / rampRunLen) * Mathf.Rad2Deg;
       r1.transform.localRotation = Quaternion.Euler(-angle, 0, 0);
 
       // Mid Landing
-      CreatePrimitive(ramps, "Landing_Mid",
+      CreatePrimitive(ramps, "LandingMiddle",
           new Vector3(innerW, 0.2f, landingDepth),
           new Vector3(0, halfH, zBackLanding), matFloor);
 
       // Ramp Up 2
-      GameObject r2 = CreatePrimitive(ramps, "Ramp_Up_2",
+      GameObject r2 = CreatePrimitive(ramps, "RampUp2",
           new Vector3(innerW / 2 - 0.1f, 0.2f, rampRunLen),
           new Vector3(innerW / 4, halfH + halfH / 2, zRampCenter), matFloor);
       r2.transform.localRotation = Quaternion.Euler(angle, 0, 0);
 
       // Top Landing
-      CreatePrimitive(ramps, "Landing_Top",
+      CreatePrimitive(ramps, "LandingTop",
           new Vector3(innerW, 0.2f, landingDepth),
           new Vector3(0, floorHeight, zFrontLanding), matFloor);
 
       // Rail
-      CreatePrimitive(ramps, "Rail_Divider",
+      CreatePrimitive(ramps, "RailDivider",
           new Vector3(0.2f, floorHeight, rampRunLen),
           new Vector3(0, floorHeight / 2, zRampCenter), matMetal);
     }
 
     // ---------------------------------------------------------
-    // UTILS (Facade, Roof, Walls)
+    // FACADES & ROOF
     // ---------------------------------------------------------
 
     private void BuildRoof(int floors, Vector3 elevPos, Vector3 stairPos, float coreLen) {
@@ -239,26 +241,26 @@ namespace GameJam {
       BuildFloorSlab(roof, coreLen);
 
       float pH = 1.2f;
-      CreatePrimitive(roof, "P_F", new Vector3(width, pH, 0.3f), new Vector3(0, pH / 2, -length / 2), matFacade);
-      CreatePrimitive(roof, "P_B", new Vector3(width, pH, 0.3f), new Vector3(0, pH / 2, length / 2), matFacade);
-      CreatePrimitive(roof, "P_L", new Vector3(0.3f, pH, length), new Vector3(-width / 2, pH / 2, 0), matFacade);
-      CreatePrimitive(roof, "P_R", new Vector3(0.3f, pH, length), new Vector3(width / 2, pH / 2, 0), matFacade);
+      CreatePrimitive(roof, "ParapetFront", new Vector3(width, pH, 0.3f), new Vector3(0, pH / 2, -length / 2), matFacade);
+      CreatePrimitive(roof, "ParapetBack", new Vector3(width, pH, 0.3f), new Vector3(0, pH / 2, length / 2), matFacade);
+      CreatePrimitive(roof, "ParapetLeft", new Vector3(0.3f, pH, length), new Vector3(-width / 2, pH / 2, 0), matFacade);
+      CreatePrimitive(roof, "ParapetRight", new Vector3(0.3f, pH, length), new Vector3(width / 2, pH / 2, 0), matFacade);
 
       BuildCoreStructure(roof, elevPos, stairPos, true);
 
-      CreatePrimitive(roof, "Elev_Cap", new Vector3(coreWidth, 0.3f, elevLength), elevPos + new Vector3(0, floorHeight, 0), matConcrete);
-      CreatePrimitive(roof, "Stair_Cap", new Vector3(coreWidth, 0.3f, stairLength), stairPos + new Vector3(0, floorHeight, 0), matConcrete);
+      CreatePrimitive(roof, "ElevatorCap", new Vector3(coreWidth, 0.3f, elevLength), elevPos + new Vector3(0, floorHeight, 0), matConcrete);
+      CreatePrimitive(roof, "StairCap", new Vector3(coreWidth, 0.3f, stairLength), stairPos + new Vector3(0, floorHeight, 0), matConcrete);
     }
 
     private void BuildLobbyFacade(GameObject parent) {
       float sideW = (width - 4f) / 2;
-      CreatePrimitive(parent, "G_L", new Vector3(sideW, floorHeight, 0.1f), new Vector3(-width / 2 + sideW / 2, floorHeight / 2, -length / 2), matGlass);
-      CreatePrimitive(parent, "G_R", new Vector3(sideW, floorHeight, 0.1f), new Vector3(width / 2 - sideW / 2, floorHeight / 2, -length / 2), matGlass);
+      CreatePrimitive(parent, "GlassLeft", new Vector3(sideW, floorHeight, 0.1f), new Vector3(-width / 2 + sideW / 2, floorHeight / 2, -length / 2), matGlass);
+      CreatePrimitive(parent, "GlassRight", new Vector3(sideW, floorHeight, 0.1f), new Vector3(width / 2 - sideW / 2, floorHeight / 2, -length / 2), matGlass);
       CreatePrimitive(parent, "Canopy", new Vector3(6f, 0.2f, 3f), new Vector3(0, 3f, -length / 2 - 1.5f), matFacade);
 
-      CreatePrimitive(parent, "W_B", new Vector3(width, floorHeight, 0.3f), new Vector3(0, floorHeight / 2, length / 2), matFacade);
-      CreatePrimitive(parent, "W_L", new Vector3(0.3f, floorHeight, length), new Vector3(-width / 2, floorHeight / 2, 0), matFacade);
-      CreatePrimitive(parent, "W_R", new Vector3(0.3f, floorHeight, length), new Vector3(width / 2, floorHeight / 2, 0), matFacade);
+      CreatePrimitive(parent, "WallBack", new Vector3(width, floorHeight, 0.3f), new Vector3(0, floorHeight / 2, length / 2), matFacade);
+      CreatePrimitive(parent, "WallLeft", new Vector3(0.3f, floorHeight, length), new Vector3(-width / 2, floorHeight / 2, 0), matFacade);
+      CreatePrimitive(parent, "WallRight", new Vector3(0.3f, floorHeight, length), new Vector3(width / 2, floorHeight / 2, 0), matFacade);
     }
 
     private void BuildStandardFacade(GameObject parent) {
@@ -270,18 +272,50 @@ namespace GameJam {
     }
 
     private void BuildBand(GameObject p, Vector3 pos, float w, float d) {
-      GameObject b = new GameObject("Band");
+      GameObject b = new GameObject("WallBand");
       b.transform.parent = p.transform;
       b.transform.localPosition = pos;
-      CreatePrimitive(b, "B", new Vector3(w, 1, d), new Vector3(0, 0.5f, 0), matFacade);
-      CreatePrimitive(b, "W", new Vector3(w, 2, d), new Vector3(0, 2f, 0), matGlass);
-      CreatePrimitive(b, "T", new Vector3(w, 1, d), new Vector3(0, 3.5f, 0), matFacade);
+
+      // Dynamic Height Calculation
+      // We keep the bottom wainscoting and top lintel fixed at 1m each.
+      // The window expands to fill the remaining height.
+      float hBottom = 1.0f;
+      float hTop = 1.0f;
+      // Ensure window isn't negative if floorHeight is tiny
+      float hWindow = Mathf.Max(0.1f, floorHeight - hBottom - hTop);
+
+      // Y Position Calculations (Relative to the floor's 0 to floorHeight)
+      float yCenterBottom = hBottom / 2;
+      float yCenterWindow = hBottom + (hWindow / 2);
+      float yCenterTop = hBottom + hWindow + (hTop / 2);
+
+      // 1. Bottom Solid Band
+      CreatePrimitive(b, "BandBottom",
+          new Vector3(w, hBottom, d),
+          new Vector3(0, yCenterBottom, 0),
+          matFacade);
+
+      // 2. Window Band (Variable Height)
+      CreatePrimitive(b, "BandWindow",
+          new Vector3(w, hWindow, d),
+          new Vector3(0, yCenterWindow, 0),
+          matGlass);
+
+      // 3. Top Solid Band
+      CreatePrimitive(b, "BandTop",
+          new Vector3(w, hTop, d),
+          new Vector3(0, yCenterTop, 0),
+          matFacade);
     }
 
     private void BuildCorridor(GameObject parent) {
-      CreatePrimitive(parent, "Div1", new Vector3(0.5f, floorHeight, 0.5f), new Vector3(-width / 4, floorHeight / 2, length / 4), matInterior);
-      CreatePrimitive(parent, "Div2", new Vector3(0.5f, floorHeight, 0.5f), new Vector3(-width / 4, floorHeight / 2, -length / 4), matInterior);
+      CreatePrimitive(parent, "Divider1", new Vector3(0.5f, floorHeight, 0.5f), new Vector3(-width / 4, floorHeight / 2, length / 4), matInterior);
+      CreatePrimitive(parent, "Divider2", new Vector3(0.5f, floorHeight, 0.5f), new Vector3(-width / 4, floorHeight / 2, -length / 4), matInterior);
     }
+
+    // ---------------------------------------------------------
+    // HELPERS
+    // ---------------------------------------------------------
 
     private void CreateWallWithDoorOffset(GameObject parent, string name, Vector3 size, Vector3 pos, float doorWidth, float doorOffsetZ, Material mat) {
       GameObject w = new GameObject(name);
@@ -298,20 +332,17 @@ namespace GameJam {
       float wallStart = -fullLen / 2;
       float wallEnd = fullLen / 2;
 
-      // Segment 1: Wall
       float s1Len = doorStart - wallStart;
       if (s1Len > 0.05f) {
-        CreatePrimitive(w, "S1", new Vector3(thick, h, s1Len), new Vector3(0, h / 2, wallStart + s1Len / 2), mat);
+        CreatePrimitive(w, "WallSegment1", new Vector3(thick, h, s1Len), new Vector3(0, h / 2, wallStart + s1Len / 2), mat);
       }
 
-      // Segment 2: Wall
       float s2Len = wallEnd - doorEnd;
       if (s2Len > 0.05f) {
-        CreatePrimitive(w, "S2", new Vector3(thick, h, s2Len), new Vector3(0, h / 2, doorEnd + s2Len / 2), mat);
+        CreatePrimitive(w, "WallSegment2", new Vector3(thick, h, s2Len), new Vector3(0, h / 2, doorEnd + s2Len / 2), mat);
       }
 
-      // Lintel
-      CreatePrimitive(w, "Top", new Vector3(thick, h - doorH, doorWidth), new Vector3(0, doorH + (h - doorH) / 2, doorOffsetZ), mat);
+      CreatePrimitive(w, "Lintel", new Vector3(thick, h - doorH, doorWidth), new Vector3(0, doorH + (h - doorH) / 2, doorOffsetZ), mat);
     }
 
     private void CreateWallWithDoor(GameObject parent, string name, Vector3 size, Vector3 pos, float doorWidth, Material mat) {
@@ -330,30 +361,52 @@ namespace GameJam {
     }
 
     private void InitializeMaterials() {
-      matConcrete = GetOrCreateMaterial("Office_Concrete", concreteColor, false);
-      matFacade = GetOrCreateMaterial("Office_Facade", facadeColor, false);
-      matGlass = GetOrCreateMaterial("Office_Glass", windowColor, true);
-      matFloor = GetOrCreateMaterial("Office_Floor", floorColor, false);
-      matInterior = GetOrCreateMaterial("Office_Interior", interiorColor, false);
-      matMetal = GetOrCreateMaterial("Office_Metal", metalColor, false);
+      // Suffix-based naming
+      matConcrete = GetOrCreateMaterial("Concrete", concreteColor, false);
+      matFacade = GetOrCreateMaterial("Facade", facadeColor, false);
+      matGlass = GetOrCreateMaterial("Glass", windowColor, true);
+      matFloor = GetOrCreateMaterial("Floor", floorColor, false);
+      matInterior = GetOrCreateMaterial("Interior", interiorColor, false);
+      matMetal = GetOrCreateMaterial("Metal", metalColor, false);
     }
 
-    private Material GetOrCreateMaterial(string matName, Color color, bool isTransparent) {
+    private Material GetOrCreateMaterial(string suffix, Color color, bool isTransparent) {
 #if UNITY_EDITOR
-      string folder = "Assets/Materials/Office";
-      if (!AssetDatabase.IsValidFolder("Assets/Materials"))
+      // Constructs: Assets/Materials/PortTowerA/PortTowerAConcrete.mat
+      string folder = $"Assets/Materials/OfficeTower/{towerName}";
+      string fileName = $"{towerName}{suffix}";
+      string fullPath = $"{folder}/{fileName}.mat";
+
+      // Ensure folders exist
+      if (!AssetDatabase.IsValidFolder("Assets/Materials")) {
         AssetDatabase.CreateFolder("Assets", "Materials");
-      if (!AssetDatabase.IsValidFolder(folder))
-        AssetDatabase.CreateFolder("Assets/Materials", "Office");
-      string fullPath = $"{folder}/{matName}.mat";
+      }
+
+      if (!AssetDatabase.IsValidFolder("Assets/Materials/OfficeTower")) {
+        AssetDatabase.CreateFolder("Assets/Materials", "OfficeTower");
+      }
+
+      if (!AssetDatabase.IsValidFolder(folder)) {
+        AssetDatabase.CreateFolder("Assets/Materials/OfficeTower", towerName);
+      }
+
+      // Check existence
       Material existing = AssetDatabase.LoadAssetAtPath<Material>(fullPath);
-      if (existing != null)
+
+      if (existing != null) {
         return existing;
+      }
+
+      // Create new
       Shader shader = Shader.Find("Universal Render Pipeline/Lit");
-      if (!shader)
+
+      if (!shader) {
         shader = Shader.Find("Standard");
+      }
+
       Material mat = new Material(shader);
       mat.SetColor("_BaseColor", color);
+
       if (isTransparent) {
         mat.SetFloat("_Surface", 1);
         mat.SetOverrideTag("RenderType", "Transparent");
@@ -363,6 +416,7 @@ namespace GameJam {
         mat.renderQueue = 3000;
         mat.SetColor("_BaseColor", new Color(color.r, color.g, color.b, 0.3f));
       }
+
       AssetDatabase.CreateAsset(mat, fullPath);
       AssetDatabase.SaveAssets();
       return mat;
