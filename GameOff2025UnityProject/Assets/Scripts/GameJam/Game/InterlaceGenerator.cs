@@ -33,7 +33,12 @@ namespace GameJam {
     public Color balconyFloorColor = new Color(0.6f, 0.5f, 0.4f);
     public Color roofGardenColor = new Color(0.3f, 0.5f, 0.2f);
 
-    private Material matConcrete, matInterior, matGlass, matBalcony, matRoof;
+    Material matConcrete;
+    Material matInterior;
+    Material matGlass;
+    Material matBalcony;
+    Material matRoof;
+    Material matGlassRail;
 
     [ContextMenu("Generate Block")]
     public void GenerateBlock() {
@@ -161,7 +166,7 @@ namespace GameJam {
           new Vector3(x, y + 0.075f, z + (protrusion / 2 * zDir)),
           matBalcony);
 
-      // Rails
+      // Rails -> USE NEW matGlassRail
       float railH = 1.1f;
       float railT = 0.05f;
       float railY = y + 0.15f + (railH / 2);
@@ -169,17 +174,17 @@ namespace GameJam {
       CreatePrimitive(parent, "RailFront",
           new Vector3(width, railH, railT),
           new Vector3(x, railY, z + (protrusion * zDir)),
-          matGlass);
+          matGlassRail); // <--- CHANGED
       CreatePrimitive(parent, "RailSideL",
           new Vector3(railT, railH, protrusion),
           new Vector3(x - (width / 2), railY, z + (protrusion / 2 * zDir)),
-          matGlass);
+          matGlassRail); // <--- CHANGED
       CreatePrimitive(parent, "RailSideR",
           new Vector3(railT, railH, protrusion),
           new Vector3(x + (width / 2), railY, z + (protrusion / 2 * zDir)),
-          matGlass);
+          matGlassRail); // <--- CHANGED
 
-      // Wall Behind Balcony
+      // Wall Behind Balcony -> KEEP matGlass (Interior Mapping)
       float wallZ = z - (windowInset * 1.5f * zDir);
       float h = floorHeight - slabThickness;
 
@@ -218,11 +223,18 @@ namespace GameJam {
     }
 
     private void InitializeMaterials() {
+      // Define colors
       matConcrete = GetOrCreateMaterial("Concrete", concreteColor, false);
-      matInterior = GetOrCreateMaterial("Interior", interiorColor, false); // New
-      matGlass = GetOrCreateMaterial("Glass", glassColor, true);
+      matInterior = GetOrCreateMaterial("Interior", interiorColor, false);
       matBalcony = GetOrCreateMaterial("Balcony", balconyFloorColor, false);
       matRoof = GetOrCreateMaterial("RoofGarden", roofGardenColor, false);
+
+      // 1. The Fake Window Material (Custom Shader)
+      matGlass = GetOrCreateMaterial("Glass", glassColor, false);
+
+      // 2. The Balcony Railing Material (Standard Transparent)
+      // We use a different suffix "GlassRail" so it gets its own material file
+      matGlassRail = GetOrCreateMaterial("GlassRail", glassColor, true);
     }
 
     private Material GetOrCreateMaterial(string suffix, Color color, bool isTransparent) {
@@ -242,21 +254,44 @@ namespace GameJam {
       if (existing != null)
         return existing;
 
-      Shader shader = Shader.Find("Universal Render Pipeline/Lit");
-      if (!shader)
-        shader = Shader.Find("Standard");
+      // --- SHADER SELECTION LOGIC ---
+      Shader shader;
+      if (suffix == "Glass") {
+        // Try to find our custom Interior Mapping shader
+        shader = Shader.Find("GameJam/URPInteriorMapping");
+        // Fallback if you haven't created the file yet
+        if (!shader) {
+          Debug.LogWarning("URPInteriorMapping shader not found, falling back to Lit.");
+          shader = Shader.Find("Universal Render Pipeline/Lit");
+        }
+      } else {
+        shader = Shader.Find("Universal Render Pipeline/Lit");
+        if (!shader)
+          shader = Shader.Find("Standard");
+      }
 
       Material mat = new Material(shader);
-      mat.SetColor("_BaseColor", color);
 
-      if (isTransparent) {
-        mat.SetFloat("_Surface", 1);
-        mat.SetOverrideTag("RenderType", "Transparent");
-        mat.SetInt("_SrcBlend", (int) UnityEngine.Rendering.BlendMode.SrcAlpha);
-        mat.SetInt("_DstBlend", (int) UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-        mat.SetInt("_ZWrite", 0);
-        mat.renderQueue = 3000;
-        mat.SetColor("_BaseColor", new Color(color.r, color.g, color.b, 0.3f));
+      // --- PROPERTY ASSIGNMENT ---
+      if (suffix == "Glass" && shader.name == "GameJam/URPInteriorMapping") {
+        // Configure Custom Shader Properties
+        mat.SetColor("_BaseColor", new Color(0.9f, 0.9f, 0.9f)); // Wall
+        mat.SetColor("_EmissionColor", new Color(1f, 0.9f, 0.7f)); // Warm Light
+        mat.SetFloat("_EmissionStrength", 2.0f);
+        mat.SetFloat("_RoomDepth", 1.0f);
+        // We don't set transparency flags because this shader is Opaque
+      } else {
+        // Standard Lit Properties
+        mat.SetColor("_BaseColor", color);
+        if (isTransparent) {
+          mat.SetFloat("_Surface", 1);
+          mat.SetOverrideTag("RenderType", "Transparent");
+          mat.SetInt("_SrcBlend", (int) UnityEngine.Rendering.BlendMode.SrcAlpha);
+          mat.SetInt("_DstBlend", (int) UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+          mat.SetInt("_ZWrite", 0);
+          mat.renderQueue = 3000;
+          mat.SetColor("_BaseColor", new Color(color.r, color.g, color.b, 0.3f));
+        }
       }
 
       AssetDatabase.CreateAsset(mat, fullPath);
