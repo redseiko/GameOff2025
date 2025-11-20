@@ -9,7 +9,7 @@ namespace GameJam {
     [Header("Identity")]
     public string apartmentName = "InterlaceBlockA";
 
-    [Header("Block Dimensions (To Scale)")]
+    [Header("Block Dimensions")]
     public float blockLength = 70.0f;
     public float blockWidth = 16.5f;
     public float floorHeight = 3.5f;
@@ -18,27 +18,24 @@ namespace GameJam {
     [Header("Internal Structure")]
     public float slabThickness = 0.3f;
     public float centralCoreWidth = 4.0f;
-    public float endCapThickness = 1.0f;
+    // EndCapThickness removed, replaced by dynamic window generation
 
     [Header("Facade Design")]
     [Range(0f, 1f)] public float balconyProbability = 0.35f;
     public float windowInset = 0.6f;
     public float finDepth = 0.6f;
-    public int modulesAlongLength = 14;
+    public int modulesAlongLength = 14; // Controls the "Grid" of the facade
 
     [Header("Colors")]
-    public Color concreteColor = new Color(0.9f, 0.9f, 0.9f); // Exterior White
-    public Color interiorColor = new Color(0.6f, 0.6f, 0.65f); // Darker Grey for inside walls
+    public Color concreteColor = new Color(0.9f, 0.9f, 0.9f);
+    public Color interiorColor = new Color(0.6f, 0.6f, 0.65f);
     public Color glassColor = new Color(0.2f, 0.3f, 0.35f, 0.4f);
     public Color balconyFloorColor = new Color(0.6f, 0.5f, 0.4f);
     public Color roofGardenColor = new Color(0.3f, 0.5f, 0.2f);
 
-    Material matConcrete;
-    Material matInterior;
-    Material matGlass;
-    Material matBalcony;
-    Material matRoof;
-    Material matGlassRail;
+    private Material matConcrete, matInterior, matGlass, matGlassRail, matBalcony, matRoof;
+
+    private enum FaceSide { Front, Back, Left, Right }
 
     [ContextMenu("Generate Block")]
     public void GenerateBlock() {
@@ -53,14 +50,19 @@ namespace GameJam {
     }
 
     private void GenerateStructure() {
+      // 1. Generate Floors
       for (int f = 0; f < floorsPerBlock; f++) {
         GenerateSingleFloor(f);
       }
 
+      // 2. Generate Roof
       GenerateRoof();
-      GenerateLongFacade(true);
-      GenerateLongFacade(false);
-      GenerateEndCaps();
+
+      // 3. Generate All 4 Facades
+      GenerateFacade(FaceSide.Front); // Z+
+      GenerateFacade(FaceSide.Back);  // Z-
+      GenerateFacade(FaceSide.Right); // X+
+      GenerateFacade(FaceSide.Left);  // X-
     }
 
     private void GenerateSingleFloor(int floorIndex) {
@@ -69,20 +71,21 @@ namespace GameJam {
       floorRoot.transform.parent = this.transform;
       floorRoot.transform.localPosition = new Vector3(0, yBase, 0);
 
-      // A. Floor Slab (Exterior visible band) -> Uses Concrete
+      // Floor Slab
       CreatePrimitive(floorRoot, "FloorSlab",
           new Vector3(blockLength, slabThickness, blockWidth),
           new Vector3(0, slabThickness / 2, 0),
-          matConcrete);
+          Vector3.zero, matConcrete);
 
-      // B. Internal Spine (Visible only through windows) -> Uses Interior Material
+      // Internal Spine
+      // We shorten it slightly (blockLength - 2m) so it doesn't hit the new End Windows
       float spineHeight = floorHeight - slabThickness;
-      float spineLength = blockLength - (endCapThickness * 2);
+      float spineLength = blockLength - 2.0f;
 
       CreatePrimitive(floorRoot, "InternalSpine",
           new Vector3(spineLength, spineHeight, centralCoreWidth),
           new Vector3(0, slabThickness + (spineHeight / 2), 0),
-          matInterior); // <--- CHANGED HERE
+          Vector3.zero, matInterior);
     }
 
     private void GenerateRoof() {
@@ -95,145 +98,204 @@ namespace GameJam {
       CreatePrimitive(roofRoot, "RoofSlab",
           new Vector3(blockLength, roofThick, blockWidth),
           new Vector3(0, roofThick / 2, 0),
-          matConcrete);
+          Vector3.zero, matConcrete);
 
       CreatePrimitive(roofRoot, "GardenSurface",
           new Vector3(blockLength - 0.5f, 0.1f, blockWidth - 0.5f),
           new Vector3(0, roofThick + 0.05f, 0),
-          matRoof);
+          Vector3.zero, matRoof);
 
       float pH = 1.2f;
       float pThick = 0.3f;
-      CreatePrimitive(roofRoot, "ParapetF", new Vector3(blockLength, pH, pThick), new Vector3(0, pH / 2, blockWidth / 2 - pThick / 2), matConcrete);
-      CreatePrimitive(roofRoot, "ParapetB", new Vector3(blockLength, pH, pThick), new Vector3(0, pH / 2, -blockWidth / 2 + pThick / 2), matConcrete);
-      CreatePrimitive(roofRoot, "ParapetL", new Vector3(pThick, pH, blockWidth), new Vector3(-blockLength / 2 + pThick / 2, pH / 2, 0), matConcrete);
-      CreatePrimitive(roofRoot, "ParapetR", new Vector3(pThick, pH, blockWidth), new Vector3(blockLength / 2 - pThick / 2, pH / 2, 0), matConcrete);
+      CreatePrimitive(roofRoot, "ParapetF", new Vector3(blockLength, pH, pThick), new Vector3(0, pH / 2, blockWidth / 2 - pThick / 2), Vector3.zero, matConcrete);
+      CreatePrimitive(roofRoot, "ParapetB", new Vector3(blockLength, pH, pThick), new Vector3(0, pH / 2, -blockWidth / 2 + pThick / 2), Vector3.zero, matConcrete);
+      CreatePrimitive(roofRoot, "ParapetL", new Vector3(pThick, pH, blockWidth), new Vector3(-blockLength / 2 + pThick / 2, pH / 2, 0), Vector3.zero, matConcrete);
+      CreatePrimitive(roofRoot, "ParapetR", new Vector3(pThick, pH, blockWidth), new Vector3(blockLength / 2 - pThick / 2, pH / 2, 0), Vector3.zero, matConcrete);
     }
 
-    private void GenerateLongFacade(bool isFront) {
-      float zPos = isFront ? (blockWidth / 2) : -(blockWidth / 2);
-      float zDir = isFront ? 1 : -1;
+    // ---------------------------------------------------------
+    // UNIFIED FACADE LOGIC
+    // ---------------------------------------------------------
 
-      GameObject facadeRoot = new GameObject(isFront ? "FacadeFront" : "FacadeBack");
+    private void GenerateFacade(FaceSide side) {
+      // Determine orientation and dimensions
+      bool isLongAxis = (side == FaceSide.Front || side == FaceSide.Back);
+      float totalLen = isLongAxis ? blockLength : blockWidth;
+
+      // Calculate Module Size
+      // We try to keep modules roughly the same size (approx 5m)
+      float referenceModuleSize = blockLength / modulesAlongLength;
+      int moduleCount = Mathf.Max(1, Mathf.RoundToInt(totalLen / referenceModuleSize));
+      float actualModuleWidth = totalLen / moduleCount;
+
+      // Determine Position & Rotation settings
+      // Offset: Distance from center to the face
+      float faceOffset = (isLongAxis ? blockWidth : blockLength) / 2.0f;
+
+      // Z-fighting prevention: push balconies slightly different amounts?
+      // For now, just precise math.
+
+      Quaternion rotation = Quaternion.identity;
+      Vector3 faceNormal = Vector3.forward; // Direction the face is looking
+
+      switch (side) {
+        case FaceSide.Front: // Z+
+          faceNormal = Vector3.forward;
+          rotation = Quaternion.Euler(0, 0, 0);
+          break;
+        case FaceSide.Back: // Z-
+          faceNormal = Vector3.back;
+          rotation = Quaternion.Euler(0, 180, 0);
+          break;
+        case FaceSide.Right: // X+
+          faceNormal = Vector3.right;
+          rotation = Quaternion.Euler(0, 90, 0);
+          break;
+        case FaceSide.Left: // X-
+          faceNormal = Vector3.left;
+          rotation = Quaternion.Euler(0, -90, 0);
+          break;
+      }
+
+      GameObject facadeRoot = new GameObject($"Facade_{side}");
       facadeRoot.transform.parent = this.transform;
       facadeRoot.transform.localPosition = Vector3.zero;
 
-      float moduleLength = blockLength / modulesAlongLength;
-
+      // Loop Floors
       for (int f = 0; f < floorsPerBlock; f++) {
         float yPos = (f * floorHeight) + slabThickness;
 
-        for (int m = 0; m < modulesAlongLength; m++) {
-          float xStart = -(blockLength / 2);
-          float xPos = xStart + (m * moduleLength) + (moduleLength / 2);
+        // Loop Modules
+        for (int m = 0; m < moduleCount; m++) {
+          // Calculate lateral position along the face (centered)
+          // We iterate from Left to Right relative to the face normal
+          float lateralStart = -(totalLen / 2);
+          float lateralPos = lateralStart + (m * actualModuleWidth) + (actualModuleWidth / 2);
 
-          if (Mathf.Abs(xPos) > (blockLength / 2) - endCapThickness)
-            continue;
+          // Convert (Lateral, Vertical, Depth) into Local Space
+          // Lateral = X (before rotation), Vertical = Y, Depth = Z (before rotation)
+          // We start at (lateralPos, yPos, faceOffset) relative to the identity rotation
+          // But since we rotate the object, we just place it at the correct world pos?
+          // Easier: Place relative to face center, then rotate point.
 
-          float seed = (f * 100) + m + (isFront ? 0 : 5000);
-          bool hasBalcony = (Mathf.PerlinNoise(seed * 0.1f, seed * 0.1f) < balconyProbability);
+          // Base pos: Center of the face
+          Vector3 centerOfFace = faceNormal * faceOffset;
+          // Lateral offset: Perpendicular to normal.
+          // If Normal is Z, Lateral is X. If Normal is X, Lateral is -Z (based on rotation).
+          // Let's rely on the rotation quaternion to do the work.
+          Vector3 localOffset = new Vector3(lateralPos, 0, 0);
+          Vector3 finalPos = centerOfFace + (rotation * localOffset);
+          finalPos.y = yPos; // Y is constant
+
+          // Randomize
+          // Use a stable seed based on position to avoid tiling artifacts
+          float seed = (f * 100) + m + (int) side * 500;
+          bool hasBalcony = (Mathf.PerlinNoise(seed * 0.1f, seed * 0.13f) < balconyProbability);
 
           if (hasBalcony) {
-            GenerateBalcony(facadeRoot, xPos, yPos, zPos, zDir, moduleLength);
+            GenerateBalcony(facadeRoot, finalPos, rotation, actualModuleWidth);
           } else {
-            GenerateWindowUnit(facadeRoot, xPos, yPos, zPos, zDir, moduleLength);
+            GenerateWindowUnit(facadeRoot, finalPos, rotation, actualModuleWidth);
           }
         }
       }
     }
 
-    private void GenerateWindowUnit(GameObject parent, float x, float y, float z, float zDir, float width) {
+    private void GenerateWindowUnit(GameObject parent, Vector3 pos, Quaternion rot, float width) {
       float h = floorHeight - slabThickness;
-      float glassZ = z - (windowInset * zDir);
 
+      // Inset Vector (Local Z negative)
+      Vector3 insetVec = rot * new Vector3(0, 0, -windowInset);
+
+      // 1. Glass
       CreatePrimitive(parent, "GlassWindow",
           new Vector3(width - 0.1f, h - 0.1f, 0.1f),
-          new Vector3(x, y + (h / 2), glassZ),
-          matGlass);
+          pos + insetVec + new Vector3(0, h / 2, 0),
+          rot, matGlass);
 
+      // 2. Sun Fin (Local X offset)
+      Vector3 finOffset = rot * new Vector3((width / 2), 0, (finDepth / 2) - 0.2f);
       CreatePrimitive(parent, "SunFin",
           new Vector3(0.15f, h, finDepth),
-          new Vector3(x + (width / 2), y + (h / 2), z + (finDepth / 2 * zDir) - (0.2f * zDir)),
-          matConcrete);
+          pos + finOffset + new Vector3(0, h / 2, 0),
+          rot, matConcrete);
     }
 
-    private void GenerateBalcony(GameObject parent, float x, float y, float z, float zDir, float width) {
+    private void GenerateBalcony(GameObject parent, Vector3 pos, Quaternion rot, float width) {
       float protrusion = 2.0f;
 
-      // Floor
+      // Local offsets relative to the 'pos' on the face surface
+      Vector3 floorCenter = rot * new Vector3(0, 0, protrusion / 2);
+      Vector3 railFront = rot * new Vector3(0, 0, protrusion);
+      Vector3 railLeft = rot * new Vector3(-width / 2, 0, protrusion / 2);
+      Vector3 railRight = rot * new Vector3(width / 2, 0, protrusion / 2);
+
+      // 1. Floor
       CreatePrimitive(parent, "BalconyFloor",
           new Vector3(width, 0.15f, protrusion),
-          new Vector3(x, y + 0.075f, z + (protrusion / 2 * zDir)),
-          matBalcony);
+          pos + floorCenter + new Vector3(0, 0.075f, 0),
+          rot, matBalcony);
 
-      // Rails -> USE NEW matGlassRail
+      // 2. Rails
       float railH = 1.1f;
       float railT = 0.05f;
-      float railY = y + 0.15f + (railH / 2);
+      float railY = 0.15f + (railH / 2);
 
       CreatePrimitive(parent, "RailFront",
           new Vector3(width, railH, railT),
-          new Vector3(x, railY, z + (protrusion * zDir)),
-          matGlassRail); // <--- CHANGED
-      CreatePrimitive(parent, "RailSideL",
-          new Vector3(railT, railH, protrusion),
-          new Vector3(x - (width / 2), railY, z + (protrusion / 2 * zDir)),
-          matGlassRail); // <--- CHANGED
-      CreatePrimitive(parent, "RailSideR",
-          new Vector3(railT, railH, protrusion),
-          new Vector3(x + (width / 2), railY, z + (protrusion / 2 * zDir)),
-          matGlassRail); // <--- CHANGED
+          pos + railFront + new Vector3(0, railY, 0),
+          rot, matGlassRail);
 
-      // Wall Behind Balcony -> KEEP matGlass (Interior Mapping)
-      float wallZ = z - (windowInset * 1.5f * zDir);
+      // Rotate side rails 90 deg local
+      Quaternion sideRot = rot * Quaternion.Euler(0, 90, 0);
+
+      CreatePrimitive(parent, "RailL",
+          new Vector3(protrusion, railH, railT), // Note: Width is now the protrusion length
+          pos + railLeft + new Vector3(0, railY, 0),
+          sideRot, matGlassRail);
+
+      CreatePrimitive(parent, "RailR",
+          new Vector3(protrusion, railH, railT),
+          pos + railRight + new Vector3(0, railY, 0),
+          sideRot, matGlassRail);
+
+      // 3. Wall Behind
       float h = floorHeight - slabThickness;
+      Vector3 wallInset = rot * new Vector3(0, 0, -windowInset * 1.5f);
 
-      CreatePrimitive(parent, "BalconyWallGlass",
+      CreatePrimitive(parent, "BalconyWall",
           new Vector3(width - 0.1f, h - 0.1f, 0.1f),
-          new Vector3(x, y + (h / 2), wallZ),
-          matGlass);
-    }
-
-    private void GenerateEndCaps() {
-      float totalH = floorsPerBlock * floorHeight;
-
-      GameObject capR = new GameObject("EndCapRight");
-      capR.transform.parent = this.transform;
-      capR.transform.localPosition = new Vector3((blockLength / 2) - (endCapThickness / 2), totalH / 2, 0);
-      CreatePrimitive(capR, "WallSolid", new Vector3(endCapThickness, totalH, blockWidth), Vector3.zero, matConcrete);
-
-      GameObject capL = new GameObject("EndCapLeft");
-      capL.transform.parent = this.transform;
-      capL.transform.localPosition = new Vector3(-(blockLength / 2) + (endCapThickness / 2), totalH / 2, 0);
-      CreatePrimitive(capL, "WallSolid", new Vector3(endCapThickness, totalH, blockWidth), Vector3.zero, matConcrete);
+          pos + wallInset + new Vector3(0, h / 2, 0),
+          rot, matGlass);
     }
 
     // ---------------------------------------------------------
     // HELPERS
     // ---------------------------------------------------------
 
-    private void CreatePrimitive(GameObject parent, string name, Vector3 scale, Vector3 pos, Material mat) {
+    // Updated CreatePrimitive to accept Rotation
+    private void CreatePrimitive(GameObject parent, string name, Vector3 scale, Vector3 pos, Vector3 eulerRot, Material mat) {
+      CreatePrimitive(parent, name, scale, pos, Quaternion.Euler(eulerRot), mat);
+    }
+
+    private void CreatePrimitive(GameObject parent, string name, Vector3 scale, Vector3 pos, Quaternion rot, Material mat) {
       GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Cube);
       obj.name = name;
       obj.transform.parent = parent.transform;
       obj.transform.localScale = scale;
-      obj.transform.localPosition = pos;
+      obj.transform.SetLocalPositionAndRotation(pos, rot);
       if (obj.GetComponent<Renderer>())
         obj.GetComponent<Renderer>().sharedMaterial = mat;
     }
 
     private void InitializeMaterials() {
-      // Define colors
       matConcrete = GetOrCreateMaterial("Concrete", concreteColor, false);
       matInterior = GetOrCreateMaterial("Interior", interiorColor, false);
       matBalcony = GetOrCreateMaterial("Balcony", balconyFloorColor, false);
       matRoof = GetOrCreateMaterial("RoofGarden", roofGardenColor, false);
 
-      // 1. The Fake Window Material (Custom Shader)
+      // Custom Shaders
       matGlass = GetOrCreateMaterial("Glass", glassColor, false);
-
-      // 2. The Balcony Railing Material (Standard Transparent)
-      // We use a different suffix "GlassRail" so it gets its own material file
       matGlassRail = GetOrCreateMaterial("GlassRail", glassColor, true);
     }
 
@@ -254,16 +316,11 @@ namespace GameJam {
       if (existing != null)
         return existing;
 
-      // --- SHADER SELECTION LOGIC ---
       Shader shader;
       if (suffix == "Glass") {
-        // Try to find our custom Interior Mapping shader
         shader = Shader.Find("GameJam/URPInteriorMapping");
-        // Fallback if you haven't created the file yet
-        if (!shader) {
-          Debug.LogWarning("URPInteriorMapping shader not found, falling back to Lit.");
+        if (!shader)
           shader = Shader.Find("Universal Render Pipeline/Lit");
-        }
       } else {
         shader = Shader.Find("Universal Render Pipeline/Lit");
         if (!shader)
@@ -272,16 +329,12 @@ namespace GameJam {
 
       Material mat = new Material(shader);
 
-      // --- PROPERTY ASSIGNMENT ---
       if (suffix == "Glass" && shader.name == "GameJam/URPInteriorMapping") {
-        // Configure Custom Shader Properties
-        mat.SetColor("_BaseColor", new Color(0.9f, 0.9f, 0.9f)); // Wall
-        mat.SetColor("_EmissionColor", new Color(1f, 0.9f, 0.7f)); // Warm Light
+        mat.SetColor("_BaseColor", new Color(0.9f, 0.9f, 0.9f));
+        mat.SetColor("_EmissionColor", new Color(1f, 0.9f, 0.7f));
         mat.SetFloat("_EmissionStrength", 2.0f);
         mat.SetFloat("_RoomDepth", 1.0f);
-        // We don't set transparency flags because this shader is Opaque
       } else {
-        // Standard Lit Properties
         mat.SetColor("_BaseColor", color);
         if (isTransparent) {
           mat.SetFloat("_Surface", 1);
