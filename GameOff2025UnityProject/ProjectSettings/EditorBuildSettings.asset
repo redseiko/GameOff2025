@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/2-MainLevel.unity
     guid: 66733bf4780af6247a5124eafb17cafa
   - enabled: 1
+    path: Assets/Scenes/Levels/2-CityLevel.unity
+    guid: c401cc605a9b7ef42a13e740399e84e1
+  - enabled: 1
     path: Assets/Scenes/Levels/2-CargoPortLevel.unity
     guid: 49bcfaab8e1328440ae00c9d627a5ce7
   m_configObjects:
