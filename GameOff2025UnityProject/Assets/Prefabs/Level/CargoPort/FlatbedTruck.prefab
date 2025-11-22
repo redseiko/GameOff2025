@@ -639,11 +639,11 @@ MonoBehaviour:
   - {fileID: 9123616275681623192}
   - {fileID: 4635806921778574014}
   - {fileID: 5586902731265444975}
-  <MotorTorque>k__BackingField: 4000
-  <BrakeTorque>k__BackingField: 4000
-  <MaxSpeed>k__BackingField: 8
-  <SteeringRange>k__BackingField: 50
-  <SteeringRangeAtMaxSpeed>k__BackingField: 50
+  <MotorTorque>k__BackingField: 5000
+  <BrakeTorque>k__BackingField: 5000
+  <MaxSpeed>k__BackingField: 12
+  <SteeringRange>k__BackingField: 75
+  <SteeringRangeAtMaxSpeed>k__BackingField: 75
   <CarMovementInput>k__BackingField:
     m_UseReference: 1
     m_Action:
