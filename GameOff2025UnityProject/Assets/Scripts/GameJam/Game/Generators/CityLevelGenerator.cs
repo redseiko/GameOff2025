@@ -43,8 +43,7 @@ namespace GameJam {
     }
 
     public void Generate(GameObject root, Vector2 size, CityZone zone) {
-      // 1. Build Foundation (Concrete Slab)
-      // FIX: Added padding so it doesn't clip into sidewalks
+      // 1. Build Foundation
       if (zone != CityZone.Park) {
         CreateBox(root, "FoundationSlab",
             new Vector3(size.x - 0.5f, 0.2f, size.y - 0.5f),
@@ -70,7 +69,6 @@ namespace GameJam {
     }
 
     private void BuildCommercial(GameObject root, Vector2 size) {
-      // Style: Tall, Blue Glass, Vertical Fins
       float height = Random.Range(30f, 80f);
       float w = size.x - 2f;
       float l = size.y - 2f;
@@ -79,54 +77,45 @@ namespace GameJam {
       CreateBox(root, "GlassMain", new Vector3(w + 0.2f, height - 2f, l + 0.2f), new Vector3(0, height / 2, 0), mats["GlassComm"]);
 
       float finThick = 1.0f;
-      CreateBox(root, "PillarFL", new Vector3(finThick, height, finThick), new Vector3(-w / 2, height / 2, -l / 2), mats["Concrete"]);
-      CreateBox(root, "PillarFR", new Vector3(finThick, height, finThick), new Vector3(w / 2, height / 2, -l / 2), mats["Concrete"]);
-      CreateBox(root, "PillarBL", new Vector3(finThick, height, finThick), new Vector3(-w / 2, height / 2, l / 2), mats["Concrete"]);
-      CreateBox(root, "PillarBR", new Vector3(finThick, height, finThick), new Vector3(w / 2, height / 2, l / 2), mats["Concrete"]);
+      CreateBox(root, "PillarFrontLeft", new Vector3(finThick, height, finThick), new Vector3(-w / 2, height / 2, -l / 2), mats["Concrete"]);
+      CreateBox(root, "PillarFrontRight", new Vector3(finThick, height, finThick), new Vector3(w / 2, height / 2, -l / 2), mats["Concrete"]);
+      CreateBox(root, "PillarBackLeft", new Vector3(finThick, height, finThick), new Vector3(-w / 2, height / 2, l / 2), mats["Concrete"]);
+      CreateBox(root, "PillarBackRight", new Vector3(finThick, height, finThick), new Vector3(w / 2, height / 2, l / 2), mats["Concrete"]);
     }
 
     private void BuildResidential(GameObject root, Vector2 size) {
-      // Style: Medium, Warm Colors, Balconies/Bands
       float height = Random.Range(12f, 30f);
       float w = size.x - 3f;
       float l = size.y - 3f;
       float floorH = 3.0f;
       int floors = Mathf.FloorToInt(height / floorH);
 
+      // Stacked Floor Logic
       for (int i = 0; i < floors; i++) {
         float y = (i * floorH);
-        // Floor Band
-        CreateBox(root, $"Floor_{i}", new Vector3(w, 0.4f, l), new Vector3(0, y + 0.2f, 0), mats["WallRes"]);
-        // Window Block
-        CreateBox(root, $"Room_{i}", new Vector3(w - 0.5f, floorH - 0.4f, l - 0.5f), new Vector3(0, y + (floorH / 2) + 0.2f, 0), mats["GlassRes"]);
-
-        // Simple Balcony Stub (Random side)
-        if (Random.value > 0.5f) {
-          CreateBox(root, $"Balcony_{i}", new Vector3(w + 1f, 1f, 2f), new Vector3(0, y + 1f, 0), mats["GlassRes"]);
-        }
+        // Floor Band (Concrete/Brick)
+        CreateBox(root, $"Floor{i}", new Vector3(w, 0.4f, l), new Vector3(0, y + 0.2f, 0), mats["WallRes"]);
+        // Window Block (Inset)
+        CreateBox(root, $"Room{i}", new Vector3(w - 0.5f, floorH - 0.4f, l - 0.5f), new Vector3(0, y + (floorH / 2) + 0.2f, 0), mats["GlassRes"]);
       }
       CreateBox(root, "Roof", new Vector3(w, 0.5f, l), new Vector3(0, (floors * floorH) + 0.25f, 0), mats["Concrete"]);
     }
 
     private void BuildIndustrial(GameObject root, Vector2 size) {
-      // Style: Low, Grey/Dark, Sawtooth Roof
       float height = Random.Range(8f, 12f);
       float w = size.x - 1.5f;
       float l = size.y - 1.5f;
 
-      // Main Block
       CreateBox(root, "FactoryWall", new Vector3(w, height, l), new Vector3(0, height / 2, 0), mats["WallInd"]);
 
-      // Roof Details (Sawtooth or Vents)
+      // Roof Details
       int segments = Mathf.FloorToInt(l / 5f);
       float segmentLen = l / segments;
 
       for (int i = 0; i < segments; i++) {
         float zPos = -l / 2 + (i * segmentLen) + (segmentLen / 2);
-        // Triangle approx
-        CreateBox(root, "RoofVent", new Vector3(w, 1.5f, segmentLen * 0.8f), new Vector3(0, height + 0.75f, zPos), mats["WallInd"]);
-        // Skylight on side of vent
-        CreateBox(root, "Skylight", new Vector3(w - 1f, 0.5f, segmentLen * 0.8f), new Vector3(0, height + 1.5f, zPos - 0.5f), mats["GlassInd"]);
+        CreateBox(root, $"RoofVent{i}", new Vector3(w, 1.5f, segmentLen * 0.8f), new Vector3(0, height + 0.75f, zPos), mats["WallInd"]);
+        CreateBox(root, $"Skylight{i}", new Vector3(w - 1f, 0.5f, segmentLen * 0.8f), new Vector3(0, height + 1.5f, zPos - 0.5f), mats["GlassInd"]);
       }
     }
 
@@ -167,8 +156,6 @@ namespace GameJam {
     public Color roadColor = new Color(0.2f, 0.2f, 0.2f);
     public Color sidewalkColor = new Color(0.7f, 0.7f, 0.7f);
     public Color buildingConcrete = new Color(0.85f, 0.85f, 0.85f);
-
-    // Re-added these to fix compile errors
     public Color buildingBrick = new Color(0.7f, 0.5f, 0.4f);
     public Color buildingGlass = new Color(0.2f, 0.4f, 0.5f, 0.6f);
     public Color buildingIndustrial = new Color(0.5f, 0.5f, 0.55f);
@@ -177,7 +164,6 @@ namespace GameJam {
     public Color glassCommercial = new Color(0.2f, 0.4f, 0.6f, 0.6f);
     public Color glassResidential = new Color(0.7f, 0.6f, 0.4f, 0.6f);
     public Color glassIndustrial = new Color(0.3f, 0.35f, 0.4f, 0.6f);
-
     public Color wallResidential = new Color(0.8f, 0.75f, 0.7f);
     public Color wallIndustrial = new Color(0.4f, 0.4f, 0.45f);
     public Color parkGreen = new Color(0.2f, 0.5f, 0.2f);
@@ -264,7 +250,7 @@ namespace GameJam {
       cityBlocks.Add(area);
     }
 
-    // --- ROADS (SMART SIDEWALKS) ---
+    // --- ROADS ---
     private void BuildOptimizedRoads() {
       GameObject roadRoot = new GameObject("RoadNetwork");
       roadRoot.transform.parent = this.transform;
@@ -276,7 +262,7 @@ namespace GameJam {
       for (int z = 0; z < config.cityLength; z++) {
         for (int x = 0; x < config.cityWidth; x++) {
           if (grid[x, z] == CellType.Road && !processed[x, z]) {
-            // Greedy Mesh Expansion
+            // Greedy Mesh
             int width = 0;
             while (x + width < config.cityWidth && grid[x + width, z] == CellType.Road && !processed[x + width, z])
               width++;
@@ -302,49 +288,40 @@ namespace GameJam {
     }
 
     private void CreateSmartRoadRect(GameObject parent, RectInt area) {
-      // 1. Asphalt (One big slab)
       float w = area.width * cellSize;
       float l = area.height * cellSize;
       float centerX = (area.x * cellSize) + (w / 2f) - (cellSize / 2);
       float centerZ = (area.y * cellSize) + (l / 2f) - (cellSize / 2);
 
-      GameObject segment = new GameObject($"Road_{area.x}_{area.y}");
+      GameObject segment = new GameObject($"RoadX{area.x}Y{area.y}");
       segment.transform.parent = parent.transform;
       segment.transform.localPosition = new Vector3(centerX, 0, centerZ);
 
       CreateBox(segment, "Asphalt", new Vector3(w, 0.1f, l), Vector3.zero, generatedMaterials["Asphalt"]);
-
-      // 2. Sidewalks (Scan perimeter for connections)
-      // We scan the cells along the edge. If neighbor is NOT road, we add sidewalk length.
-      // If neighbor IS road, we break the sidewalk mesh to create an opening.
 
       float swWidth = 2.0f;
       float swHeight = 0.2f;
       float halfW = w / 2;
       float halfL = l / 2;
 
-      // Left Edge
       if (area.x > 0)
         GenerateEdgeSidewalks(segment, area.y, area.height, true,
             (offset) => grid[area.x - 1, offset] != CellType.Road,
             (centerOffset, length) => new Vector3(-halfW + swWidth / 2, 0.05f, -halfL + centerOffset),
             (length) => new Vector3(swWidth, swHeight, length));
 
-      // Right Edge
       if (area.x + area.width < config.cityWidth)
         GenerateEdgeSidewalks(segment, area.y, area.height, true,
             (offset) => grid[area.x + area.width, offset] != CellType.Road,
             (centerOffset, length) => new Vector3(halfW - swWidth / 2, 0.05f, -halfL + centerOffset),
             (length) => new Vector3(swWidth, swHeight, length));
 
-      // Bottom Edge
       if (area.y > 0)
         GenerateEdgeSidewalks(segment, area.x, area.width, false,
             (offset) => grid[offset, area.y - 1] != CellType.Road,
             (centerOffset, length) => new Vector3(-halfW + centerOffset, 0.05f, -halfL + swWidth / 2),
             (length) => new Vector3(length, swHeight, swWidth));
 
-      // Top Edge
       if (area.y + area.height < config.cityLength)
         GenerateEdgeSidewalks(segment, area.x, area.width, false,
             (offset) => grid[offset, area.y + area.height] != CellType.Road,
@@ -352,7 +329,6 @@ namespace GameJam {
             (length) => new Vector3(length, swHeight, swWidth));
     }
 
-    // Helper to generate broken sidewalk strips
     private void GenerateEdgeSidewalks(GameObject parent, int startIdx, int count, bool vertical,
                                        System.Func<int, bool> isNeighborNonRoad,
                                        System.Func<float, float, Vector3> getPos,
@@ -371,14 +347,12 @@ namespace GameJam {
           currentLen += cellSize;
         } else {
           if (building) {
-            // End of segment, build it
             SpawnSidewalkPiece(parent, startOffset, currentLen, getPos, getScale);
             building = false;
             currentLen = 0;
           }
         }
       }
-      // Flush last segment
       if (building)
         SpawnSidewalkPiece(parent, startOffset, currentLen, getPos, getScale);
     }
@@ -386,12 +360,7 @@ namespace GameJam {
     private void SpawnSidewalkPiece(GameObject parent, float startOffset, float length,
                                     System.Func<float, float, Vector3> getPos,
                                     System.Func<float, Vector3> getScale) {
-      // Logic to center the piece relative to the startOffset + length
-      float centerPos = startOffset + (length / 2f) + (cellSize / 2f) - (cellSize / 2f); // (cellSize/2) adj because offset 0 is corner
-                                                                                         // Wait, offset 0 in loop means distance 0 from corner.
-                                                                                         // Center of first cell (k=0) is at distance 5.
-      //centerPos = startOffset + (length / 2f);
-
+      float centerPos = startOffset + (length / 2f);
       CreateBox(parent, "Sidewalk", getScale(length), getPos(centerPos, length), generatedMaterials["Sidewalk"]);
     }
 
@@ -402,20 +371,20 @@ namespace GameJam {
       plotRoot.transform.localPosition = Vector3.zero;
       Undo.RegisterCreatedObjectUndo(plotRoot, "Create Buildings");
 
-      ProceduralBuildingGenerator builder = new ProceduralBuildingGenerator(generatedMaterials);
+      var builder = new ProceduralBuildingGenerator(generatedMaterials);
 
-      foreach (RectInt block in cityBlocks) {
+      foreach (var block in cityBlocks) {
         CityZone blockZone = DetermineZone(block);
         List<RectInt> lots = new List<RectInt>();
         SubdivideBlockIntoLots(block, lots);
 
-        foreach (RectInt lot in lots) {
+        foreach (var lot in lots) {
           float w = lot.width * cellSize;
           float l = lot.height * cellSize;
           float x = (lot.x * cellSize) + (w / 2) - (cellSize / 2);
           float z = (lot.y * cellSize) + (l / 2) - (cellSize / 2);
 
-          GameObject pObj = new GameObject($"Lot_X{lot.x}Y{lot.y}");
+          GameObject pObj = new GameObject($"LotX{lot.x}Y{lot.y}");
           pObj.transform.parent = plotRoot.transform;
           pObj.transform.localPosition = new Vector3(x, 0, z);
 
@@ -490,15 +459,12 @@ namespace GameJam {
 
     private void InitializeMaterials() {
       generatedMaterials = new Dictionary<string, Material> {
-        // Infrastructure
         ["Asphalt"] = GetOrCreateMaterial("RoadAsphalt", roadColor),
         ["Sidewalk"] = GetOrCreateMaterial("RoadSidewalk", sidewalkColor),
 
-        // Base Materials
-        ["Concrete"] = GetOrCreateMaterial("BuildConcrete", buildingConcrete), // Fixed variable name
+        ["Concrete"] = GetOrCreateMaterial("BuildConcrete", buildingConcrete),
         ["Brick"] = GetOrCreateMaterial("BuildBrick", buildingBrick),
 
-        // Specific Zones
         ["GlassComm"] = GetOrCreateMaterial("GlassCommercial", glassCommercial, true),
         ["GlassRes"] = GetOrCreateMaterial("GlassResidential", glassResidential, true),
         ["GlassInd"] = GetOrCreateMaterial("GlassIndustrial", glassIndustrial, true),
@@ -506,7 +472,7 @@ namespace GameJam {
         ["WallRes"] = GetOrCreateMaterial("WallResidential", wallResidential),
         ["WallInd"] = GetOrCreateMaterial("WallIndustrial", wallIndustrial),
 
-        // Fallbacks / Legacy
+        // Legacy fallbacks
         ["Glass"] = GetOrCreateMaterial("BuildGlass", buildingGlass, true),
         ["Industrial"] = GetOrCreateMaterial("BuildIndustrial", buildingIndustrial),
         ["Park"] = GetOrCreateMaterial("BuildPark", parkGreen)
