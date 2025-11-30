@@ -168,7 +168,7 @@ MonoBehaviour:
     cityLength: 88
     minBlockSize: 4
     maxBlockSize: 18
-    mainRoadWidth: 2
+    mainRoadWidth: 3
     minLotSize: 2
     maxLotAspectRatio: 4
   cellSize: 5
