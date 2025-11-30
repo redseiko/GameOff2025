@@ -86,12 +86,18 @@ namespace GameJam {
     }
 
     private void InitializeGenerators() {
-      generators = new Dictionary<CityZone, IPlotGenerator> {
-        { CityZone.Commercial, new CommercialGenerator() },
-        { CityZone.Residential, new ResidentialGenerator() },
-        { CityZone.Industrial, new IndustrialGenerator() },
-        { CityZone.Park, new ParkGenerator() }
-      };
+      generators = new Dictionary<CityZone, IPlotGenerator>();
+
+      // 1. Residential: Mix of Old Stubs (70%) and New Walkables (30%)
+      var resSelector = new RandomSelectorGenerator();
+      resSelector.AddCandidate(new ResidentialGenerator(), 0.1f);        // The faceted block we made previously
+      resSelector.AddCandidate(new ResidentialWalkableGenerator(), 0.9f); // The new one with the door
+      generators.Add(CityZone.Residential, resSelector);
+
+      // 2. Others: Keep as single generators for now
+      generators.Add(CityZone.Commercial, new CommercialGenerator());
+      generators.Add(CityZone.Industrial, new IndustrialGenerator());
+      generators.Add(CityZone.Park, new ParkGenerator());
     }
 
     // --- LAYOUT ---
